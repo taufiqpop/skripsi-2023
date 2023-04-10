@@ -1,15 +1,19 @@
 <?= $this->extend('templates/index'); ?>
 <?= $this->section('page-content'); ?>
-<div class="container-fluid">
 
+<div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">User List</h1>
+
+    <!-- Table -->
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">No</th>
+                        <th scope="col">Photo Profile</th>
+                        <th scope="col">Full Name</th>
                         <th scope="col">Username</th>
                         <th scope="col">Email</th>
                         <th scope="col">Role</th>
@@ -21,11 +25,15 @@
                     <?php foreach ($users as $user) : ?>
                         <tr>
                             <th scope="row"><?= $i++; ?></th>
-                            <td><?= $user->username; ?></td>
-                            <td><?= $user->email; ?></td>
-                            <td><?= $user->name; ?></td>
                             <td>
-                                <a href="<?= base_url('admin/' . $user->userid); ?>" class="btn btn-info">Details</a>
+                                <img src="/img/<?= $user['user_image']; ?>" class="thumbnail">
+                            </td>
+                            <td><?= $user['fullname']; ?></td>
+                            <td><?= $user['username']; ?></td>
+                            <td><?= $user['email']; ?></td>
+                            <td><?= $user['name']; ?></td>
+                            <td>
+                                <a href="<?= base_url('admin/detail/' . $user['userid']); ?>" class="btn btn-info">Details</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

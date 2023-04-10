@@ -1,58 +1,71 @@
 <?= $this->extend('templates/index'); ?>
 <?= $this->section('page-content'); ?>
-<div class="container-fluid">
 
+<div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">User Details</h1>
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="<?= base_url('/img/' . $user->user_image); ?>" class="card-img" alt="<?= $user->username; ?>">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <h4><?= $user->username; ?></h4>
-                                </li>
 
-                                <?php if ($user->fullname) : ?>
-                                    <li class="list-group-item"><?= $user->fullname; ?></li>
+    <!-- Table -->
+    <?php $i = 1; ?>
+    <?php foreach ($user as $user) : ?>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="<?= base_url('/img/' . $user['user_image']); ?>" class="card-img user-details" alt="<?= $user['username']; ?>">
+                            <div class="role-profile">
+                                <?php if ($user['name'] == 'admin') : ?>
+                                    <span class="badge badge-danger"><?= $user['name']; ?></span>
                                 <?php endif; ?>
 
-                                <li class="list-group-item"><?= $user->email; ?></li>
-                                <li class="list-group-item">
-                                    <!-- <span class="badge badge-<?= ($user->name == 'admin') ? 'success' : 'warning'; ?>"><?= $user->name; ?></span> -->
-                                    <?php if ($user->name == 'admin') : ?>
-                                        <span class="badge badge-danger"><?= $user->name; ?></span>
+                                <?php if ($user['name'] == 'jurnalistik') : ?>
+                                    <span class="badge badge-warning"><?= $user['name']; ?></span>
+                                <?php endif; ?>
+
+                                <?php if ($user['name'] == 'produksi') : ?>
+                                    <span class="badge badge-success"><?= $user['name']; ?></span>
+                                <?php endif; ?>
+
+                                <?php if ($user['name'] == 'user') : ?>
+                                    <span class="badge badge-primary"><?= $user['name']; ?></span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <?php if ($user['fullname']) : ?>
+                                        <li class="list-group-item">
+                                            <h4>
+                                                <?= $user['fullname']; ?>
+                                            </h4>
+                                        </li>
                                     <?php endif; ?>
 
-                                    <?php if ($user->name == 'jurnalistik') : ?>
-                                        <span class="badge badge-warning"><?= $user->name; ?></span>
-                                    <?php endif; ?>
+                                    <li class="list-group-item">
+                                        Username : <?= $user['username']; ?>
+                                    </li>
 
-                                    <?php if ($user->name == 'produksi') : ?>
-                                        <span class="badge badge-success"><?= $user->name; ?></span>
-                                    <?php endif; ?>
+                                    <li class="list-group-item">
+                                        Email : <?= $user['email']; ?>
+                                    </li>
+                                </ul>
+                                <a href="<?= base_url('admin'); ?>" class="btn btn-dark col-3">Back</a>
+                                <a href="<?= base_url('admin/edit/' . $user['userid']); ?>" class="btn btn-warning col-3">Edit</a>
 
-                                    <?php if ($user->name == 'user') : ?>
-                                        <span class="badge badge-primary"><?= $user->name; ?></span>
-                                    <?php endif; ?>
-                                </li>
-                                <li class="list-group-item">
-                                    <small>
-                                        <a href="<?= base_url('admin'); ?>">&laquo; Back to User List</a>
-                                    </small>
-                                </li>
-                            </ul>
+                                <form action="/admin/<?= $user['userid']; ?>" method="post" class="d-inline">
+                                    <?= csrf_field(); ?>
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger col-3" onclick="return confirm('Apakah anda yakin?');">Delete</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    <?php endforeach; ?>
 
 </div>
 <?= $this->endSection(); ?>

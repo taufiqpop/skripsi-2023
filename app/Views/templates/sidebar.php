@@ -1,13 +1,14 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="\user">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laptop-code"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Rapma FM</div>
     </a>
 
+    <!-- User Management -->
     <?php if (in_groups('admin')) : ?>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -25,6 +26,7 @@
         </li>
     <?php endif; ?>
 
+    <!-- User Profile -->
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -42,20 +44,47 @@
 
     <!-- Nav Item - Edit Profile -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('editProfile'); ?>">
+        <a class="nav-link" href="/admin/edit/<?= user()->id; ?>" ; ?>
             <i class="fas fa-user-edit"></i>
             <span>Edit Profile</span></a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+    <!-- Jurnalistik -->
+    <?php if (in_groups('admin')) : ?>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
 
-    <!-- Nav Item - Logout -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('logout'); ?>">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Logout</span></a>
-    </li>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Jurnalistik
+        </div>
+
+        <!-- Nav Item - NewsFlash -->
+        <li class="nav-item">
+            <a class="nav-link" href="/user/newsflash" ; ?>
+                <i class="fas fa-book"></i>
+                <span>NewsFlash</span></a>
+        </li>
+    <?php endif; ?>
+
+    <!-- Produksi -->
+    <?php if (in_groups('admin')) : ?>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Produksi
+        </div>
+
+        <!-- Nav Item - Podcast -->
+        <li class="nav-item">
+            <a class="nav-link" href="/user/podcast">
+                <i class="fas fa-microphone"></i>
+                <span>Podcast</span></a>
+        </li>
+    <?php endif; ?>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
