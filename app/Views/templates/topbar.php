@@ -13,7 +13,7 @@
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= user()->username; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= user()->fullname; ?></span>
                 <img class="img-profile rounded-circle" src="<?= base_url(); ?>/img/<?= user()->user_image; ?>">
             </a>
             <!-- Dropdown - User Information -->
@@ -21,6 +21,10 @@
                 <a class="dropdown-item" href="<?= base_url('user'); ?>">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     My Profile
+                </a>
+                <a class="dropdown-item" href="https://app.crisp.chat/" target="_blank">
+                    <i class="fa fa-bell fa-sm fa-spin fa-fw mr-2 text-gray-400"></i>
+                    Live Chat
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

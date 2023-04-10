@@ -3,7 +3,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="\user">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laptop-code"></i>
+            <i class="fas fa-microphone fa-spin"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Rapma FM</div>
     </a>
@@ -62,7 +62,7 @@
         <!-- Nav Item - NewsFlash -->
         <li class="nav-item">
             <a class="nav-link" href="/user/newsflash" ; ?>
-                <i class="fas fa-book"></i>
+                <i class="fas fa-newspaper"></i>
                 <span>NewsFlash</span></a>
         </li>
     <?php endif; ?>
