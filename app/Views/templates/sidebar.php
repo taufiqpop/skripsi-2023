@@ -50,7 +50,7 @@
     </li>
 
     <!-- Jurnalistik -->
-    <?php if (in_groups('admin')) : ?>
+    <?php if (in_groups('admin') || in_groups('jurnalistik') || in_groups('user')) : ?>
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -61,14 +61,14 @@
 
         <!-- Nav Item - NewsFlash -->
         <li class="nav-item">
-            <a class="nav-link" href="/user/newsflash" ; ?>
+            <a class="nav-link" href="/newsflash/newsflash" ; ?>
                 <i class="fas fa-newspaper"></i>
                 <span>NewsFlash</span></a>
         </li>
     <?php endif; ?>
 
     <!-- Produksi -->
-    <?php if (in_groups('admin')) : ?>
+    <?php if (in_groups('admin') || in_groups('produksi')) : ?>
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -79,7 +79,7 @@
 
         <!-- Nav Item - Podcast -->
         <li class="nav-item">
-            <a class="nav-link" href="/user/podcast">
+            <a class="nav-link" href="/podcast/podcast">
                 <i class="fas fa-microphone"></i>
                 <span>Podcast</span></a>
         </li>
