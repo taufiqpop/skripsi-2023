@@ -18,26 +18,26 @@
                     <div class="col-sm-10">
                         <select class="form-select" name="program" id="program">
                             <option selected>--Choose Programs--</option>
-                            <option value="basosapi">BASOSAPI</option>
-                            <option value="11n1">11N1</option>
-                            <option value="rapmanesia">RAPMANESIA</option>
-                            <option value="tgv">THE GOOD VIBES</option>
-                            <option value="kp">KHASANAH PETANG</option>
-                            <option value="mb">MUSIC BOX</option>
-                            <option value="top15">TOP 15</option>
-                            <option value="rapmatalks">RAPMATALKS</option>
-                            <option value="afterday">AFTERDAY</option>
+                            <option value="BASOSAPI">BASOSAPI</option>
+                            <option value="11N1">11N1</option>
+                            <option value="RAPMANESIA">RAPMANESIA</option>
+                            <option value="THE GOOD VIBES">THE GOOD VIBES</option>
+                            <option value="KHASANAH PETANG">KHASANAH PETANG</option>
+                            <option value="MUSIC BOX">MUSIC BOX</option>
+                            <option value="TOP 15">TOP 15</option>
+                            <option value="RAPMATALKS">RAPMATALKS</option>
+                            <option value="AFTERDAY">AFTERDAY</option>
 
-                            <option value="ms">MOVIE SCREEN</option>
-                            <option value="knq">KING & QUEEN</option>
-                            <option value="indiezone">INDIEZONE</option>
-                            <option value="teksas">TEKSAS</option>
-                            <option value="merinding">MERINDING</option>
-                            <option value="karena">K-ARENA</option>
-                            <option value="sportacular">SPORTACULAR</option>
-                            <option value="sk">SUDUT KAMPUS</option>
-                            <option value="ns">NO SATNIGHT</option>
-                            <option value="cn">CLASSIC NIGHT</option>
+                            <option value="MOVIE SCREEN">MOVIE SCREEN</option>
+                            <option value="KING & QUEEN">KING & QUEEN</option>
+                            <option value="INDIEZONE">INDIEZONE</option>
+                            <option value="TEKSAS">TEKSAS</option>
+                            <option value="MERINDING">MERINDING</option>
+                            <option value="K-ARENA">K-ARENA</option>
+                            <option value="SPORTACULAR">SPORTACULAR</option>
+                            <option value="SUDUT KAMPUS">SUDUT KAMPUS</option>
+                            <option value="NO SATNIGHT">NO SATNIGHT</option>
+                            <option value="CLASSIC NIGHT">CLASSIC NIGHT</option>
                         </select>
                     </div>
                 </div>
