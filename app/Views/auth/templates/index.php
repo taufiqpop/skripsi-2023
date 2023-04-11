@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Rapma FM | Login</title>
+    <title>Rapma FM | Login / Register</title>
 
     <link rel="icon" href="<?php echo base_url(); ?>logo.ico">
 

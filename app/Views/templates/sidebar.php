@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="\user">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="https://taufiqpop99.github.io/Web-Rapma-FM/index.html" target="_blank">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-microphone fa-spin"></i>
         </div>
