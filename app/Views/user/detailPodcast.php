@@ -7,32 +7,32 @@
 
     <!-- Table -->
     <?php $i = 1; ?>
-    <?php foreach ($newsflash as $newsflash) : ?>
+    <?php foreach ($podcast as $podcast) : ?>
         <div class="row">
             <div class="col-lg-12">
-                <div class="card mb-3" style="max-width: 1000px;">
+                <div class="card mb-3" style="max-width: 800px;">
                     <div class="row no-gutters">
                         <div class="col-md-6">
-                            <img src="<?= base_url('/img/' . $newsflash['images']); ?>" class="card-img newsflash-img img-thumbnail">
+                            <img src="<?= base_url('/img/' . $podcast['images']); ?>" class="card-img podcast-img img-thumbnail">
                         </div>
                         <div class="col-md-6">
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
                                         <h4>
-                                            <?= $newsflash['judul']; ?>
+                                            <?= $podcast['judul']; ?>
                                         </h4>
                                     </li>
 
                                     <li class="list-group-item justify">
-                                        <?= $newsflash['deskripsi']; ?>
+                                        <?= $podcast['deskripsi']; ?>
                                     </li>
                                 </ul>
                                 <div class="container tombol-newsflash">
-                                    <a href="<?= base_url('user/newsflash'); ?>" class="btn btn-dark col-3">Back</a>
-                                    <a href="<?= base_url('user/editNewsflash/' . $newsflash['id']); ?>" class="btn btn-warning col-3">Edit</a>
+                                    <a href="<?= base_url('user/podcast'); ?>" class="btn btn-dark col-3">Back</a>
+                                    <a href="<?= base_url('user/editPodcast/' . $podcast['id']); ?>" class="btn btn-warning col-3">Edit</a>
 
-                                    <form action="/user/<?= $newsflash['id']; ?>" method="post" class="d-inline">
+                                    <form action="/user/podcast/<?= $podcast['id']; ?>" method="post" class="d-inline">
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" class="btn btn-danger col-3" onclick="return confirm('Apakah anda yakin?');">Delete</button>

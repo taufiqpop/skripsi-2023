@@ -15,7 +15,6 @@
                         <th scope="col">Photo Profile</th>
                         <th scope="col">Full Name</th>
                         <th scope="col">Username</th>
-                        <th scope="col">Email</th>
                         <th scope="col">Role</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -30,7 +29,6 @@
                             </td>
                             <td><?= $user['fullname']; ?></td>
                             <td><?= $user['username']; ?></td>
-                            <td><?= $user['email']; ?></td>
                             <td><?= $user['name']; ?></td>
                             <td>
                                 <a href="<?= base_url('admin/detail/' . $user['userid']); ?>" class="btn btn-info">Details</a>

@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class NewsflashModel extends Model
+class PodcastModel extends Model
 {
-    protected $table            = 'newsflash';
+    protected $table            = 'podcast';
     protected $primaryKey       = 'id';
     protected $returnType       = 'array';
-    protected $allowedFields    = ['judul', 'deskripsi', 'link', 'images'];
+    protected $allowedFields    = ['judul', 'program', 'deskripsi', 'link', 'images'];
     protected $useTimestamps    = true;
 
-    public function getNewsflash($link = false)
+    public function getPodcast($link = false)
     {
         if ($link == false) {
             return $this->findAll();

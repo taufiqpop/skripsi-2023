@@ -69,7 +69,7 @@ class User extends BaseController
 
         $db = \Config\Database::connect();
         $builder = $db->table('podcast');
-        $builder->select('id, link');
+        $builder->select('id, program, judul, deskripsi, link, images');
         $query = $builder->get();
 
         $data['podcast'] = $query->getResultArray();
@@ -78,18 +78,62 @@ class User extends BaseController
         return view('user/podcast', $data);
     }
 
+    public function addPodcast()
+    {
+        $data['title'] = 'Rapma FM | Add Podcast';
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('podcast');
+        $builder->select('id, program, judul, deskripsi, link, images');
+        $query = $builder->get();
+
+        $data['podcast'] = $query->getResultArray();
+        // dd($data);
+
+        return view('user/addPodcast', $data);
+    }
+
+    public function detailPodcast($id)
+    {
+        $podcastModel = new \App\Models\PodcastModel();
+        $podcastMod = $podcastModel->find($id);
+        // dd($usMod);
+
+        $data = [
+            'title' => 'Rapma FM | Details Podcast',
+            'newsflash' => $podcastMod,
+        ];
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('podcast');
+        $builder->select('id, program, judul, deskripsi, link, images');
+        $builder->where('id', $id);
+        $query = $builder->get();
+
+        $data['podcast'] = $query->getResultArray();
+        // dd($data);
+
+        return view('user/detailPodcast', $data);
+    }
+
     // Delete Data
     public function delete($id)
     {
         $newsModel = new \App\Models\NewsflashModel();
-        $hapus = $newsModel->find($id);
-
-        if ($hapus['images'] != 'default.svg') {
-            unlink('img/' . $hapus['images']);
-        }
 
         $newsModel->delete($id);
         session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
         return redirect('user/newsflash');
+    }
+
+    // Create Data Newsflash
+    public function createNewsflash()
+    {
+        $data = [
+            'title' => 'Form Tambah Data Newsflash',
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('user/newsflash', $data);
     }
 }
