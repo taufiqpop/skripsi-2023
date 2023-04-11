@@ -8,6 +8,10 @@
     text-align: center;
 }
 
+#judul-rata-kiri {
+    text-align: justify;
+}
+
 .table > tbody > tr > th {
     vertical-align: middle;
     text-align: center;
@@ -15,16 +19,6 @@
 
 .table > thead > tr > th {
     text-align: center;
-}
-
-#accordionSidebar {
-    position: relative;
-}
-#navbar {
-    position: relative;
-}
-#page-content {
-    position: relative;
 }
 
 .user-details {
@@ -59,4 +53,14 @@
 .tombol-newsflash {
     margin-top: 88px;
     margin-left: -5px;
+}
+
+#accordionSidebar {
+    position: relative;
+}
+#navbar {
+    position: relative;
+}
+#page-content {
+    position: relative;
 }

@@ -38,10 +38,12 @@ $routes->delete('/admin/(:num)', 'Admin::delete/$1', ['filter' => 'role:admin'])
 
 $routes->delete('/newsflash/(:num)', 'Newsflash::delete/$1', ['filter' => 'role:admin,jurnalistik']);
 $routes->get('/newsflash/newsflash', 'Newsflash::newsflash', ['filter' => 'role:admin,jurnalistik,user']);
+$routes->get('/newsflash/addNewsflash', 'Newsflash::addNewsflash');
+
 
 $routes->delete('/podcast/(:num)', 'Podcast::delete/$1', ['filter' => 'role:admin,produksi']);
 $routes->get('/podcast/podcast', 'Podcast::podcast', ['filter' => 'role:admin,produksi']);
-
+$routes->get('/podcast/addPodcast', 'Podcast::addPodcast');
 
 /*
  * --------------------------------------------------------------------

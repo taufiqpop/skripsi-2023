@@ -63,4 +63,36 @@ class Podcast extends BaseController
         session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
         return redirect('podcast/podcast');
     }
+
+    // Save Data
+    public function save()
+    {
+        $newsModel = new \App\Models\PodcastModel();
+
+        // Ambil gambar
+        // $fileGambar = $this->request->getFile('sampul');
+
+        // Apakah tidak ada gambar yg diupload
+        // if ($fileGambar->getError() == 4) {
+        //     $namaGambar = 'default.svg';
+        // } else {
+        //     // pindahkan file ke folder img
+        //     $fileGambar->move('img');
+
+        //     // ambil nama file
+        //     $namaGambar = $fileGambar->getName();
+        // }
+
+        $newsModel->save([
+            'judul' => $this->request->getVar('judul'),
+            'program' => $this->request->getVar('program'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'link' => $this->request->getVar('link'),
+            // 'images' => $namaGambar,
+            'images' => $this->request->getVar('images'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');
+        return redirect('podcast/podcast');
+    }
 }

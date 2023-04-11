@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-8">
+        <div class="col-10">
             <h1 class="h3 mb-4 text-gray-800">Daftar Newsflash</h1>
             <a href="\newsflash\addNewsflash" class="btn btn-primary">Add Newsflash</a>
             <br><br>
@@ -24,7 +24,7 @@
                             <?php foreach ($newsflash as $newsflash) : ?>
                                 <tr>
                                     <th scope="row"><?= $i++; ?></th>
-                                    <td><?= $newsflash['judul']; ?></td>
+                                    <td id="judul-rata-kiri"><?= $newsflash['judul']; ?></td>
                                     <td>
                                         <a href="<?= $newsflash['link']; ?>" class="btn btn-warning" target="_blank">Link</a>
                                     </td>

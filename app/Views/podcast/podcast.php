@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-8">
+        <div class="col-11">
             <h1 class="h3 mb-4 text-gray-800">Daftar Podcast</h1>
             <a href="\podcast\addPodcast" class="btn btn-primary">Add Podcast</a>
             <br><br>
@@ -15,6 +15,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
+                                <th scope="col">Artwork</th>
                                 <th scope="col">Program</th>
                                 <th scope="col">Judul</th>
                                 <th scope="col">Link</th>
@@ -26,8 +27,11 @@
                             <?php foreach ($podcast as $podcast) : ?>
                                 <tr>
                                     <th scope="row"><?= $i++; ?></th>
+                                    <td>
+                                        <img src="/img/<?= $podcast['images']; ?>" class="thumbnail">
+                                    </td>
                                     <td><?= $podcast['program']; ?></td>
-                                    <td><?= $podcast['judul']; ?></td>
+                                    <td id="judul-rata-kiri"><?= $podcast['judul']; ?></td>
                                     <td>
                                         <a href="<?= $podcast['link']; ?>" class="btn btn-warning" target="_blank">Link</a>
                                     </td>
