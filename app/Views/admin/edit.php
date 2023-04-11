@@ -12,25 +12,25 @@
                     <div class="form-group row">
                         <label for="email" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" placeholder="<?= $users['email']; ?>" name="email" id="email" autofocus value="<?= (old('email')) ? old('email') : $user['email']; ?>">
+                            <input type="email" class="form-control" name="email" id="email" autofocus value="<?= (old('email')) ? old('email') : $user['email']; ?>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="username" class="col-sm-2 col-form-label">Username</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="<?= $users['username']; ?>" name="username" id="username" value="<?= (old('username')) ? old('username') : $user['username']; ?>">
+                            <input type="text" class="form-control" name="username" id="username" value="<?= (old('username')) ? old('username') : $user['username']; ?>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="fullname" class="col-sm-2 col-form-label">Full Name</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="<?= $users['fullname']; ?>" name="fullname" id="fullname" value="<?= (old('fullname')) ? old('fullname') : $user['fullname']; ?>">
+                            <input type="text" class="form-control" name="fullname" id="fullname" value="<?= (old('fullname')) ? old('fullname') : $user['fullname']; ?>">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="user_image" class="col-sm-2 col-form-label">Photo</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="<?= $users['user_image']; ?>" name="user_image" id="user_image" value="<?= (old('user_image')) ? old('user_image') : $user['user_image']; ?>">
+                            <input type="text" class="form-control" name="user_image" id="user_image" value="<?= (old('user_image')) ? old('user_image') : $user['user_image']; ?>">
                         </div>
                     </div>
                     <?php if (in_groups('admin')) : ?>

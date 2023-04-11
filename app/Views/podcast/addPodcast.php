@@ -84,7 +84,7 @@
                 <div class="form-group row">
                     <div class="col-sm-10">
                         <a href="\podcast\podcast" class="btn btn-dark">Back</a>
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn btn-primary">Publish</button>
                     </div>
                 </div>
             </form>

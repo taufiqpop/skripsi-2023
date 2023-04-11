@@ -95,4 +95,27 @@ class Podcast extends BaseController
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');
         return redirect('podcast/podcast');
     }
+
+    // Edit Data Podcast
+    public function editPodcast($id)
+    {
+        $podcastModel = new \App\Models\PodcastModel();
+        $podcastMod = $podcastModel->find($id);
+        // dd($usMod);
+
+        $data = [
+            'title' => 'Rapma FM | Edit Data Podcast',
+            'podcast' => $podcastMod,
+        ];
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('podcast');
+        $builder->select('id, program, judul, deskripsi, link, images');
+        $builder->where('id', $id);
+        $query = $builder->get();
+
+        $data['podcast'] = $query->getResultArray();
+
+        return view('podcast/editPodcast', $data);
+    }
 }

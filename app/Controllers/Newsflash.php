@@ -96,4 +96,27 @@ class Newsflash extends BaseController
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');
         return redirect('newsflash/newsflash');
     }
+
+    // Edit Data Newsflash
+    public function editNewsflash($id)
+    {
+        $newsModel = new \App\Models\NewsflashModel();
+        $newsMod = $newsModel->find($id);
+        // dd($usMod);
+
+        $data = [
+            'title' => 'Rapma FM | Edit Data Newsflash',
+            'newsflash' => $newsMod,
+        ];
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('newsflash');
+        $builder->select('id, judul, deskripsi, link, images');
+        $builder->where('id', $id);
+        $query = $builder->get();
+
+        $data['newsflash'] = $query->getResultArray();
+
+        return view('newsflash/editNewsflash', $data);
+    }
 }
