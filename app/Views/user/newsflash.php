@@ -4,41 +4,39 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h1 class="h3 mb-4 text-gray-800">Newsflash</h1>
-            <form action="" method="post" enctype="multipart/form-data">
-                <?= csrf_field(); ?>
-                <div class="form-group row">
-                    <label for="judul" class="col-sm-2 col-form-label">Judul</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="Judul Berita" name="judul" value="" autofocus>
-                    </div>
+            <h1 class="h3 mb-4 text-gray-800">Daftar Newsflash</h1>
+            <a href="\user\addNewsflash" class="btn btn-primary">Add Newsflash</a>
+            <br><br>
+            <!-- Table -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Judul</th>
+                                <th scope="col">Link</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1; ?>
+                            <?php foreach ($newsflash as $newsflash) : ?>
+                                <tr>
+                                    <th scope="row"><?= $i++; ?></th>
+                                    <td><?= $newsflash['judul']; ?></td>
+                                    <td>
+                                        <a href="<?= $newsflash['link']; ?>" class="btn btn-warning" target="_blank">Link</a>
+                                    </td>
+                                    <td>
+                                        <a href="<?= base_url('user/detailNewsflash/' . $newsflash['id']); ?>" class="btn btn-info">Details</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="form-group row">
-                    <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
-                    <div class="col-sm-10">
-                        <textarea type="text" class="form-control" placeholder="Deskripsi Berita" name="deskripsi" value=""></textarea>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="link" class="col-sm-2 col-form-label">Link Berita</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="https://" name="link" value="">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="images" class="col-sm-2 col-form-label">Images</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="images.png" name="images" value="">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-sm-10">
-                        <a href="\user" class="btn btn-dark">Back</a>
-                        <button type="submit" class="btn btn-primary">Publish</button>
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
