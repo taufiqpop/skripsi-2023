@@ -9,8 +9,8 @@
     <meta name="author" content="">
 
     <title>Rapma FM | Login</title>
-    <link rel="icon" href="<?php echo base_url(); ?>logo.ico">
 
+    <link rel="icon" href="<?php echo base_url(); ?>logo.ico">
 
     <!-- Fonts -->
     <link href="<?= base_url(); ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

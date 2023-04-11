@@ -3,19 +3,21 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h2>Form Tambah Data Akun</h2>
+            <h1 class="h3 mb-4 text-gray-800">Form Tambah Data Akun</h1>
             <form action="/admin/save" method="post">
                 <?= csrf_field(); ?>
+
                 <div class="form-group row">
                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" placeholder="Email" name="email" id="email" autofocus>
+                        <input type="email" class="form-control" placeholder="<?= lang('Auth.email') ?>" name="email" id="email" autofocus required>
+                        <small id="emailHelp" class="form-text text-muted"><?= lang('Auth.weNeverShare') ?></small>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="username" class="col-sm-2 col-form-label">Username</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="Username" name="username" id="username">
+                        <input type="text" class="form-control" placeholder="<?= lang('Auth.username') ?>" name="username" id="username" required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -25,9 +27,9 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="password" class="col-sm-2 col-form-label">Password</label>
+                    <label for="password_hash" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" placeholder="Password" name="password" id="password">
+                        <input type="password" class="form-control" placeholder="<?= lang('Auth.password') ?>" name="password_hash" id="password" required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -71,7 +73,7 @@
                 <div class="form-group row">
                     <div class="col-sm-10">
                         <a href="\admin" class="btn btn-dark">Back</a>
-                        <button type="submit" class="btn btn-primary">Tambah Akun</button>
+                        <button type="submit" class="btn btn-primary">Add Akun</button>
                     </div>
                 </div>
             </form>

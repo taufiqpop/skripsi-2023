@@ -115,4 +115,51 @@ class Admin extends BaseController
         $usersModel = new \App\Models\UsersModel();
         $update = $usersModel->find($id);
     }
+
+    // Create Data Akun
+    public function create()
+    {
+        $data['title'] = 'Rapma FM | Add Account';
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('users');
+        $builder->select('users.id as userid, username, email, fullname, user_image, password_hash');
+        $query = $builder->get();
+
+        $data['users'] = $query->getResultArray();
+
+        return view('admin/create', $data);
+    }
+
+    // Save Data
+    public function save()
+    {
+        $usersModel = new \App\Models\UsersModel();
+
+        // Ambil gambar
+        // $fileGambar = $this->request->getFile('sampul');
+
+        // Apakah tidak ada gambar yg diupload
+        // if ($fileGambar->getError() == 4) {
+        //     $namaGambar = 'default.svg';
+        // } else {
+        //     // pindahkan file ke folder img
+        //     $fileGambar->move('img');
+
+        //     // ambil nama file
+        //     $namaGambar = $fileGambar->getName();
+        // }
+
+        $usersModel->save([
+            'email' => $this->request->getVar('email'),
+            'username' => $this->request->getVar('username'),
+            'fullname' => $this->request->getVar('fullname'),
+            'password_hash' => $this->request->getVar('password_hash'),
+            // 'images' => $namaGambar,
+            'user_images' => $this->request->getVar('user_images'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');
+        return redirect('admin');
+    }
 }
