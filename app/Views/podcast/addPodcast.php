@@ -55,30 +55,17 @@
                 </div>
                 <div class="form-group row">
                     <label for="images" class="col-sm-2 col-form-label">Artwork</label>
-                    <div class="col-sm-10">
-                        <select class="form-select" name="images" id="images" required>
-                            <option selected>--Choose Artwork--</option>
-                            <option value="BasoSapi.png">BASOSAPI</option>
-                            <option value="11N1.png">11N1</option>
-                            <option value="Rapmanesia.png">RAPMANESIA</option>
-                            <option value="TGV.png">THE GOOD VIBES</option>
-                            <option value="KhasanahPetang.jpg">KHASANAH PETANG</option>
-                            <option value="MusicBox.png">MUSIC BOX</option>
-                            <option value="TOP15.png">TOP 15</option>
-                            <option value="Rapmatalks.png">RAPMATALKS</option>
-                            <option value="Afterday.png">AFTERDAY</option>
-
-                            <option value="MovieScreen.png">MOVIE SCREEN</option>
-                            <option value="KingNQueen.png">KING & QUEEN</option>
-                            <option value="Indiezone.png">INDIEZONE</option>
-                            <option value="Teksas.png">TEKSAS</option>
-                            <option value="Merinding.png">MERINDING</option>
-                            <option value="K-Arena.png">K-ARENA</option>
-                            <option value="Sportacular.png">SPORTACULAR</option>
-                            <option value="SudutKampus.png">SUDUT KAMPUS</option>
-                            <option value="NoSatnight.png">NOSATNIGHT</option>
-                            <option value="ClassicNight.png">CLASSIC NIGHT</option>
-                        </select>
+                    <div class="col-sm-2">
+                        <img src="/img/default.svg" class="img-thumbnail img-preview" alt="">
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input <?= ($validation->hasError('images')) ? 'is invalid' : ''; ?>" id="imgPodcast" name="images" onchange="previewImgPodcast()">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('images'); ?>
+                            </div>
+                            <label class="custom-file-label" for="images">Choose Artwork</label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">

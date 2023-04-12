@@ -21,7 +21,10 @@ class Podcast extends BaseController
     // Create Data Podcast
     public function addPodcast()
     {
-        $data['title'] = 'Rapma FM | Add Podcast';
+        $data = [
+            'title' => 'Rapma FM | Add Podcast',
+            'validation' => \Config\Services::validation()
+        ];
 
         $db = \Config\Database::connect();
         $builder = $db->table('podcast');
@@ -59,6 +62,15 @@ class Podcast extends BaseController
     {
         $podcastModel = new \App\Models\PodcastModel();
 
+        // Cari gambar berdasarkan id
+        $podcastMod = $podcastModel->find($id);
+
+        // Cek jika file gambar default.svg
+        if ($podcastMod['images'] != 'default.svg') {
+            // Hapus Gambar Permanen
+            unlink('img/' . $podcastMod['images']);
+        }
+
         $podcastModel->delete($id);
         session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
         return redirect('podcast/podcast');
@@ -67,29 +79,45 @@ class Podcast extends BaseController
     // Save Data
     public function save()
     {
-        $newsModel = new \App\Models\PodcastModel();
+        $podcastModel = new \App\Models\PodcastModel();
+
+        // Validasi Input
+        if (!$this->validate([
+            'images' => [
+                'rules' => 'uploaded[images]|max_size[images,10240]|is_image[images]|mime_in[images,image/jpg,image/jpeg,image/png,image/svg]',
+                'errors' => [
+                    'uploaded' => 'Pilih gambar terlebih dahulu',
+                    'max_size' => 'Ukuran gambar terlalu besar',
+                    'is_image' => 'Yang anda pilih bukan gambar',
+                    'mime_in' => 'Yang anda pilih bukan gambar'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('podcast/addPodcast')->withInput()->with('validation', $validation);
+        }
 
         // Ambil gambar
-        // $fileGambar = $this->request->getFile('sampul');
+        $gambarPodcast = $this->request->getFile('images');
+        // dd($gambarPodcast);
 
         // Apakah tidak ada gambar yg diupload
-        // if ($fileGambar->getError() == 4) {
-        //     $namaGambar = 'default.svg';
-        // } else {
-        //     // pindahkan file ke folder img
-        //     $fileGambar->move('img');
+        if ($gambarPodcast->getError() == 4) {
+            $namaGambar = 'default.svg';
+        } else {
+            // pindahkan file ke folder img
+            $gambarPodcast->move('img');
 
-        //     // ambil nama file
-        //     $namaGambar = $fileGambar->getName();
-        // }
+            // ambil nama file
+            $namaGambar = $gambarPodcast->getName();
+        }
 
-        $newsModel->save([
+        $podcastModel->save([
             'judul' => $this->request->getVar('judul'),
             'program' => $this->request->getVar('program'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'link' => $this->request->getVar('link'),
-            // 'images' => $namaGambar,
-            'images' => $this->request->getVar('images'),
+            'images' => $namaGambar,
         ]);
 
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');
@@ -105,6 +133,7 @@ class Podcast extends BaseController
         $data = [
             'title' => 'Rapma FM | Edit Data Podcast',
             'podcast' => $podcastMod,
+            'validation' => \Config\Services::validation()
         ];
 
         $db = \Config\Database::connect();
@@ -123,6 +152,35 @@ class Podcast extends BaseController
     {
         $podcastModel = new \App\Models\PodcastModel();
 
+        // Validasi Input
+        if (!$this->validate([
+            'images' => [
+                'rules' => 'max_size[images,10240]|is_image[images]|mime_in[images,image/jpg,image/jpeg,image/png,image/svg]',
+                'errors' => [
+                    'max_size' => 'Ukuran gambar terlalu besar',
+                    'is_image' => 'Yang anda pilih bukan gambar',
+                    'mime_in' => 'Yang anda pilih bukan gambar'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('newsflash/addNewsflash')->withInput()->with('validation', $validation);
+        }
+
+        $fileImgPodcast = $this->request->getFile('images');
+
+        // Cek gambar, apakah tetap gambar lama
+        if ($fileImgPodcast->getError() == 4) {
+            $namaImgPodcast = $this->request->getVar('imgPodcastLama');
+        } else {
+            // Generate nama file random
+            $namaImgPodcast = $fileImgPodcast->getRandomName();
+            // Pindahkan gambar
+            $fileImgPodcast->move('img', $namaImgPodcast);
+            // Hapus File yg Lama
+            unlink('img/' . $this->request->getVar('imgPodcastLama'));
+        }
+
         // dd($this->request->getVar());
         $podcastModel->save([
             'id' => $id,
@@ -130,8 +188,7 @@ class Podcast extends BaseController
             'program' => $this->request->getVar('program'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'link' => $this->request->getVar('link'),
-            // 'images' => $namaGambar,
-            'images' => $this->request->getVar('images'),
+            'images' => $namaImgPodcast,
         ]);
 
         session()->setFlashdata('pesan', 'Data Berhasil Diubah!');

@@ -27,8 +27,17 @@
                 </div>
                 <div class="form-group row">
                     <label for="images" class="col-sm-2 col-form-label">Images</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="images.png" name="images" value="" required>
+                    <div class="col-sm-2">
+                        <img src="/img/default.svg" class="img-thumbnail img-preview" alt="">
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input <?= ($validation->hasError('images')) ? 'is invalid' : ''; ?>" id="imgNewsflash" name="images" onchange="previewImgNewsflash()">
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('images'); ?>
+                            </div>
+                            <label class="custom-file-label" for="images">Choose Image</label>
+                        </div>
                     </div>
                 </div>
 
