@@ -11,13 +11,4 @@ class PodcastModel extends Model
     protected $returnType       = 'array';
     protected $allowedFields    = ['judul', 'program', 'deskripsi', 'link', 'images'];
     protected $useTimestamps    = true;
-
-    public function getPodcast($link = false)
-    {
-        if ($link == false) {
-            return $this->findAll();
-        }
-
-        return $this->where(['link' => $link])->first();
-    }
 }

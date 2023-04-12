@@ -7,30 +7,30 @@
         <div class="row">
             <div class="col-8">
                 <h1 class="h3 mb-4 text-gray-800">Form Edit Data Newsflash</h1>
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="/newsflash/update/<?= $newsflash['id']; ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="form-group row">
                         <label for="judul" class="col-sm-2 col-form-label">Judul</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="judul" value="<?= $newsflash['judul']; ?>" autofocus>
+                            <input type="text" class="form-control" name="judul" value="<?= $newsflash['judul']; ?>" autofocus required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="deskripsi" value="<?= $newsflash['deskripsi']; ?>">
+                            <input type="text" class="form-control" name="deskripsi" value="<?= $newsflash['deskripsi']; ?>" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="link" class="col-sm-2 col-form-label">Link Berita</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="link" value="<?= $newsflash['link']; ?>">
+                            <input type="text" class="form-control" name="link" value="<?= $newsflash['link']; ?>" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="images" class="col-sm-2 col-form-label">Images</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="images" value="<?= $newsflash['images']; ?>">
+                            <input type="text" class="form-control" name="images" value="<?= $newsflash['images']; ?>" required>
                         </div>
                     </div>
 

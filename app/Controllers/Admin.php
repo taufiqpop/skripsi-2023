@@ -110,12 +110,6 @@ class Admin extends BaseController
         return view('admin/ubahPassword', $data);
     }
 
-    public function update($id)
-    {
-        $usersModel = new \App\Models\UsersModel();
-        $update = $usersModel->find($id);
-    }
-
     // Create Data Akun
     public function create()
     {
@@ -160,6 +154,25 @@ class Admin extends BaseController
         ]);
 
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');
+        return redirect('admin');
+    }
+
+    // Update Data
+    public function update($id)
+    {
+        $usersModel = new \App\Models\UsersModel();
+
+        // dd($this->request->getVar());
+        $usersModel->save([
+            'id' => $id,
+            'email' => $this->request->getVar('email'),
+            'username' => $this->request->getVar('username'),
+            'fullname' => $this->request->getVar('fullname'),
+            // 'user_images' => $namaGambar,
+            'user_images' => $this->request->getVar('user_images'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Diubah!');
         return redirect('admin');
     }
 }

@@ -11,13 +11,4 @@ class NewsflashModel extends Model
     protected $returnType       = 'array';
     protected $allowedFields    = ['judul', 'deskripsi', 'link', 'images'];
     protected $useTimestamps    = true;
-
-    public function getNewsflash($link = false)
-    {
-        if ($link == false) {
-            return $this->findAll();
-        }
-
-        return $this->where(['link' => $link])->first();
-    }
 }

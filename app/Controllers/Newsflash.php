@@ -102,7 +102,6 @@ class Newsflash extends BaseController
     {
         $newsModel = new \App\Models\NewsflashModel();
         $newsMod = $newsModel->find($id);
-        // dd($usMod);
 
         $data = [
             'title' => 'Rapma FM | Edit Data Newsflash',
@@ -118,5 +117,24 @@ class Newsflash extends BaseController
         $data['newsflash'] = $query->getResultArray();
 
         return view('newsflash/editNewsflash', $data);
+    }
+
+    // Update Data
+    public function update($id)
+    {
+        $newsModel = new \App\Models\NewsflashModel();
+
+        // dd($this->request->getVar());
+        $newsModel->save([
+            'id' => $id,
+            'judul' => $this->request->getVar('judul'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'link' => $this->request->getVar('link'),
+            // 'images' => $namaGambar,
+            'images' => $this->request->getVar('images'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Diubah!');
+        return redirect('newsflash/newsflash');
     }
 }

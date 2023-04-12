@@ -101,7 +101,6 @@ class Podcast extends BaseController
     {
         $podcastModel = new \App\Models\PodcastModel();
         $podcastMod = $podcastModel->find($id);
-        // dd($usMod);
 
         $data = [
             'title' => 'Rapma FM | Edit Data Podcast',
@@ -117,5 +116,25 @@ class Podcast extends BaseController
         $data['podcast'] = $query->getResultArray();
 
         return view('podcast/editPodcast', $data);
+    }
+
+    // Update Data
+    public function update($id)
+    {
+        $podcastModel = new \App\Models\PodcastModel();
+
+        // dd($this->request->getVar());
+        $podcastModel->save([
+            'id' => $id,
+            'judul' => $this->request->getVar('judul'),
+            'program' => $this->request->getVar('program'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'link' => $this->request->getVar('link'),
+            // 'images' => $namaGambar,
+            'images' => $this->request->getVar('images'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data Berhasil Diubah!');
+        return redirect('podcast/podcast');
     }
 }
