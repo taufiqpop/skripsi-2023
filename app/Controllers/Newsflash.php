@@ -166,7 +166,7 @@ class Newsflash extends BaseController
             ]
         ])) {
             $validation = \Config\Services::validation();
-            return redirect()->to('newsflash/addNewsflash')->withInput()->with('validation', $validation);
+            return redirect()->to('newsflash/editNewsflash')->withInput()->with('validation', $validation);
         }
 
         $fileImgNewsflash = $this->request->getFile('images');

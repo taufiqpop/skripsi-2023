@@ -27,3 +27,18 @@ function previewImgPodcast () {
         imgPodcastPreview.src = e.target.result;
     }
 }
+
+function previewImgUser () {
+    const imgUser = document.querySelector('#imgUser');
+    const imgUserLabel = document.querySelector('.custom-file-label');
+    const imgUserPreview = document.querySelector('.img-preview');
+
+    imgUserLabel.textContent = imgUser.files[0].name;
+
+    const fileImgUser = new FileReader();
+    fileImgUser.readAsDataURL(imgUser.files[0]);
+
+    fileImgUser.onload = function (e) {
+        imgUserPreview.src = e.target.result;
+    }
+}

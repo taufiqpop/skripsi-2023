@@ -164,7 +164,7 @@ class Podcast extends BaseController
             ]
         ])) {
             $validation = \Config\Services::validation();
-            return redirect()->to('newsflash/addNewsflash')->withInput()->with('validation', $validation);
+            return redirect()->to('podcast/editPodcast')->withInput()->with('validation', $validation);
         }
 
         $fileImgPodcast = $this->request->getFile('images');

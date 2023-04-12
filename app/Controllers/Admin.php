@@ -70,6 +70,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Rapma FM | Form Edit Data',
             'users' => $usMod,
+            'validation' => \Config\Services::validation()
         ];
 
         $db = \Config\Database::connect();
@@ -130,27 +131,13 @@ class Admin extends BaseController
     {
         $usersModel = new \App\Models\UsersModel();
 
-        // Ambil gambar
-        // $fileGambar = $this->request->getFile('sampul');
-
-        // Apakah tidak ada gambar yg diupload
-        // if ($fileGambar->getError() == 4) {
-        //     $namaGambar = 'default.svg';
-        // } else {
-        //     // pindahkan file ke folder img
-        //     $fileGambar->move('img');
-
-        //     // ambil nama file
-        //     $namaGambar = $fileGambar->getName();
-        // }
-
         $usersModel->save([
             'email' => $this->request->getVar('email'),
             'username' => $this->request->getVar('username'),
             'fullname' => $this->request->getVar('fullname'),
             'password_hash' => $this->request->getVar('password_hash'),
             // 'images' => $namaGambar,
-            'user_images' => $this->request->getVar('user_images'),
+            'user_image' => $this->request->getVar('user_image'),
         ]);
 
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');
@@ -162,14 +149,42 @@ class Admin extends BaseController
     {
         $usersModel = new \App\Models\UsersModel();
 
+        // Validasi Input
+        if (!$this->validate([
+            'images' => [
+                'rules' => 'max_size[images,10240]|is_image[images]|mime_in[images,image/jpg,image/jpeg,image/png,image/svg]',
+                'errors' => [
+                    'max_size' => 'Ukuran gambar terlalu besar',
+                    'is_image' => 'Yang anda pilih bukan gambar',
+                    'mime_in' => 'Yang anda pilih bukan gambar'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('admin/edit')->withInput()->with('validation', $validation);
+        }
+
+        $fileImgUser = $this->request->getFile('images');
+
+        // Cek gambar, apakah tetap gambar lama
+        if ($fileImgUser->getError() == 4) {
+            $namaImgUser = $this->request->getVar('imgUserLama');
+        } else {
+            // Generate nama file random
+            $namaImgUser = $fileImgUser->getRandomName();
+            // Pindahkan gambar
+            $fileImgUser->move('img', $namaImgUser);
+            // Hapus File yg Lama
+            unlink('img/' . $this->request->getVar('imgUserLama'));
+        }
+
         // dd($this->request->getVar());
         $usersModel->save([
             'id' => $id,
             'email' => $this->request->getVar('email'),
             'username' => $this->request->getVar('username'),
             'fullname' => $this->request->getVar('fullname'),
-            // 'user_images' => $namaGambar,
-            'user_images' => $this->request->getVar('user_images'),
+            'user_image' => $namaImgUser,
         ]);
 
         session()->setFlashdata('pesan', 'Data Berhasil Diubah!');
