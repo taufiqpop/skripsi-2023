@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 class Podcast extends BaseController
 {
+    // List Podcast
     public function podcast()
     {
         $data['title'] = 'Rapma FM | Podcast';
@@ -18,24 +19,7 @@ class Podcast extends BaseController
         return view('podcast/podcast', $data);
     }
 
-    // Create Data Podcast
-    public function addPodcast()
-    {
-        $data = [
-            'title' => 'Rapma FM | Add Podcast',
-            'validation' => \Config\Services::validation()
-        ];
-
-        $db = \Config\Database::connect();
-        $builder = $db->table('podcast');
-        $builder->select('id, program, judul, deskripsi, link, images');
-        $query = $builder->get();
-
-        $data['podcast'] = $query->getResultArray();
-
-        return view('podcast/addPodcast', $data);
-    }
-
+    // Detail Podcast
     public function detailPodcast($id)
     {
         $podcastModel = new \App\Models\PodcastModel();
@@ -57,23 +41,22 @@ class Podcast extends BaseController
         return view('podcast/detailPodcast', $data);
     }
 
-    // Delete Data Podcast
-    public function delete($id)
+    // Create Data
+    public function addPodcast()
     {
-        $podcastModel = new \App\Models\PodcastModel();
+        $data = [
+            'title' => 'Rapma FM | Add Podcast',
+            'validation' => \Config\Services::validation()
+        ];
 
-        // Cari gambar berdasarkan id
-        $podcastMod = $podcastModel->find($id);
+        $db = \Config\Database::connect();
+        $builder = $db->table('podcast');
+        $builder->select('id, program, judul, deskripsi, link, images');
+        $query = $builder->get();
 
-        // Cek jika file gambar default.svg
-        if ($podcastMod['images'] != 'default.svg') {
-            // Hapus Gambar Permanen
-            unlink('img/' . $podcastMod['images']);
-        }
+        $data['podcast'] = $query->getResultArray();
 
-        $podcastModel->delete($id);
-        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
-        return redirect('podcast/podcast');
+        return view('podcast/addPodcast', $data);
     }
 
     // Save Data
@@ -124,7 +107,7 @@ class Podcast extends BaseController
         return redirect('podcast/podcast');
     }
 
-    // Edit Data Podcast
+    // Edit Data
     public function editPodcast($id)
     {
         $podcastModel = new \App\Models\PodcastModel();
@@ -192,6 +175,25 @@ class Podcast extends BaseController
         ]);
 
         session()->setFlashdata('pesan', 'Data Berhasil Diubah!');
+        return redirect('podcast/podcast');
+    }
+
+    // Delete Data
+    public function delete($id)
+    {
+        $podcastModel = new \App\Models\PodcastModel();
+
+        // Cari gambar berdasarkan id
+        $podcastMod = $podcastModel->find($id);
+
+        // Cek jika file gambar default.svg
+        if ($podcastMod['images'] != 'default.svg') {
+            // Hapus Gambar Permanen
+            unlink('img/' . $podcastMod['images']);
+        }
+
+        $podcastModel->delete($id);
+        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
         return redirect('podcast/podcast');
     }
 }

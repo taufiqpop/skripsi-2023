@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 class Admin extends BaseController
 {
+    // User List
     public function index()
     {
         $data['title'] = 'Rapma FM | User List';
@@ -45,58 +46,7 @@ class Admin extends BaseController
         return view('admin/detail', $data);
     }
 
-    // Edit Data
-    public function edit($id)
-    {
-        $usersModel = new \App\Models\UsersModel();
-        $usMod = $usersModel->find($id);
-        // dd($usMod);
-
-        $data = [
-            'title' => 'Rapma FM | Form Edit Data',
-            'users' => $usMod,
-            'validation' => \Config\Services::validation()
-        ];
-
-        $db = \Config\Database::connect();
-        $builder = $db->table('users');
-        $builder->select('users.id as userid, username, email, fullname, user_image, name');
-        $builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
-        $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
-        $builder->where('users.id', $id);
-        $query = $builder->get();
-
-        $data['user'] = $query->getResultArray();
-
-        return view('admin/edit', $data);
-    }
-
-    // Edit Password
-    public function ubahPassword($id)
-    {
-        $usersModel = new \App\Models\UsersModel();
-        $usMod = $usersModel->find($id);
-        // dd($usMod);
-
-        $data = [
-            'title' => 'Rapma FM | Form Change Password',
-            'users' => $usMod,
-        ];
-
-        $db = \Config\Database::connect();
-        $builder = $db->table('users');
-        $builder->select('users.id as userid, username, email, fullname, user_image, name');
-        $builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
-        $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
-        $builder->where('users.id', $id);
-        $query = $builder->get();
-
-        $data['user'] = $query->getResultArray();
-
-        return view('admin/ubahPassword', $data);
-    }
-
-    // Create Data Akun
+    // Create Data
     public function create()
     {
         $data['title'] = 'Rapma FM | Add Account';
@@ -127,6 +77,32 @@ class Admin extends BaseController
 
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');
         return redirect('admin');
+    }
+
+    // Edit Data
+    public function edit($id)
+    {
+        $usersModel = new \App\Models\UsersModel();
+        $usMod = $usersModel->find($id);
+        // dd($usMod);
+
+        $data = [
+            'title' => 'Rapma FM | Form Edit Data',
+            'users' => $usMod,
+            'validation' => \Config\Services::validation()
+        ];
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('users');
+        $builder->select('users.id as userid, username, email, fullname, user_image, name');
+        $builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $builder->where('users.id', $id);
+        $query = $builder->get();
+
+        $data['user'] = $query->getResultArray();
+
+        return view('admin/edit', $data);
     }
 
     // Update Data
@@ -181,7 +157,7 @@ class Admin extends BaseController
         return redirect('admin');
     }
 
-    // Delete Data
+    // Delete Data 
     public function delete($id)
     {
         $usersModel = new \App\Models\UsersModel();
@@ -194,5 +170,30 @@ class Admin extends BaseController
         $usersModel->delete($id);
         session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
         return redirect('admin/index');
+    }
+
+    // Change Password
+    public function ubahPassword($id)
+    {
+        $usersModel = new \App\Models\UsersModel();
+        $usMod = $usersModel->find($id);
+        // dd($usMod);
+
+        $data = [
+            'title' => 'Rapma FM | Form Change Password',
+            'users' => $usMod,
+        ];
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('users');
+        $builder->select('users.id as userid, username, email, fullname, user_image, name');
+        $builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $builder->where('users.id', $id);
+        $query = $builder->get();
+
+        $data['user'] = $query->getResultArray();
+
+        return view('admin/ubahPassword', $data);
     }
 }

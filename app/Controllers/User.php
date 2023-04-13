@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 class User extends BaseController
 {
+    // My Profile
     public function index()
     {
         $data['title'] = 'Rapma FM | My Profile';

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 class Newsflash extends BaseController
 {
+    // List Newsflash
     public function newsflash()
     {
         $data['title'] = 'Rapma FM | Newsflash';
@@ -19,24 +20,7 @@ class Newsflash extends BaseController
         return view('newsflash/newsflash', $data);
     }
 
-    // Create Data Newsflash
-    public function addNewsflash()
-    {
-        $data = [
-            'title' => 'Rapma FM | Add Newsflash',
-            'validation' => \Config\Services::validation()
-        ];
-
-        $db = \Config\Database::connect();
-        $builder = $db->table('newsflash');
-        $builder->select('id, judul, deskripsi, link, images');
-        $query = $builder->get();
-
-        $data['newsflash'] = $query->getResultArray();
-
-        return view('newsflash/addNewsflash', $data);
-    }
-
+    // Detail Newsflash
     public function detailNewsflash($id)
     {
         $newsModel = new \App\Models\NewsflashModel();
@@ -58,24 +42,22 @@ class Newsflash extends BaseController
         return view('newsflash/detailNewsflash', $data);
     }
 
-    // Delete Data Newsflash
-    public function delete($id)
+    // Create Data
+    public function addNewsflash()
     {
-        $newsModel = new \App\Models\NewsflashModel();
+        $data = [
+            'title' => 'Rapma FM | Add Newsflash',
+            'validation' => \Config\Services::validation()
+        ];
 
-        // Cari gambar berdasarkan id
-        $newsMod = $newsModel->find($id);
+        $db = \Config\Database::connect();
+        $builder = $db->table('newsflash');
+        $builder->select('id, judul, deskripsi, link, images');
+        $query = $builder->get();
 
-        // Cek jika file gambar default.svg
-        if ($newsMod['images'] != 'default.svg') {
-            // Hapus Gambar Permanen
-            unlink('img/' . $newsMod['images']);
-        }
+        $data['newsflash'] = $query->getResultArray();
 
-
-        $newsModel->delete($id);
-        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
-        return redirect('newsflash/newsflash');
+        return view('newsflash/addNewsflash', $data);
     }
 
     // Save Data
@@ -126,7 +108,7 @@ class Newsflash extends BaseController
         return redirect('newsflash/newsflash');
     }
 
-    // Edit Data Newsflash
+    // Edit Data
     public function editNewsflash($id)
     {
         $newsModel = new \App\Models\NewsflashModel();
@@ -193,6 +175,26 @@ class Newsflash extends BaseController
         ]);
 
         session()->setFlashdata('pesan', 'Data Berhasil Diubah!');
+        return redirect('newsflash/newsflash');
+    }
+
+    // Delete Data
+    public function delete($id)
+    {
+        $newsModel = new \App\Models\NewsflashModel();
+
+        // Cari gambar berdasarkan id
+        $newsMod = $newsModel->find($id);
+
+        // Cek jika file gambar default.svg
+        if ($newsMod['images'] != 'default.svg') {
+            // Hapus Gambar Permanen
+            unlink('img/' . $newsMod['images']);
+        }
+
+
+        $newsModel->delete($id);
+        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
         return redirect('newsflash/newsflash');
     }
 }
