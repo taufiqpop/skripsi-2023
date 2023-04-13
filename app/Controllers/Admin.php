@@ -45,21 +45,6 @@ class Admin extends BaseController
         return view('admin/detail', $data);
     }
 
-    // Delete Data
-    public function delete($id)
-    {
-        $usersModel = new \App\Models\UsersModel();
-        $hapus = $usersModel->find($id);
-
-        if ($hapus['user_image'] != 'default.svg') {
-            unlink('img/' . $hapus['user_image']);
-        }
-
-        $usersModel->delete($id);
-        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
-        return redirect('admin/index');
-    }
-
     // Edit Data
     public function edit($id)
     {
@@ -148,6 +133,7 @@ class Admin extends BaseController
     public function update($id)
     {
         $usersModel = new \App\Models\UsersModel();
+        $hapus = $usersModel->find($id);
 
         // Validasi Input
         if (!$this->validate([
@@ -175,7 +161,11 @@ class Admin extends BaseController
             // Pindahkan gambar
             $fileImgUser->move('img', $namaImgUser);
             // Hapus File yg Lama
-            unlink('img/' . $this->request->getVar('imgUserLama'));
+            if ($hapus['user_image'] != 'default.svg') {
+                unlink('img/' . $this->request->getVar('imgUserLama'));
+            } else {
+                unlink('img/' . $hapus['user_image']);
+            }
         }
 
         // dd($this->request->getVar());
@@ -189,5 +179,20 @@ class Admin extends BaseController
 
         session()->setFlashdata('pesan', 'Data Berhasil Diubah!');
         return redirect('admin');
+    }
+
+    // Delete Data
+    public function delete($id)
+    {
+        $usersModel = new \App\Models\UsersModel();
+        $hapus = $usersModel->find($id);
+
+        if ($hapus['user_image'] != 'default.svg') {
+            unlink('img/' . $hapus['user_image']);
+        }
+
+        $usersModel->delete($id);
+        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
+        return redirect('admin/index');
     }
 }
