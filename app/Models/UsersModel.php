@@ -15,12 +15,8 @@ class UsersModel extends Model
     ];
     protected $useTimestamps    = true;
 
-    public function getUsers($username = false)
+    public function search($keyword)
     {
-        if ($username == false) {
-            return $this->findAll();
-        }
-
-        return $this->where(['username' => $username])->first();
+        return $this->table('users')->like('username', $keyword)->orLike('fullname', $keyword);
     }
 }

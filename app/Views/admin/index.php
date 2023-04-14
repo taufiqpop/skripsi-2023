@@ -6,6 +6,7 @@
     <h1 class="h3 mb-4 text-gray-800">User List</h1>
     <a href="\admin\create" class="btn btn-primary">Add Account</a>
     <br><br>
+
     <!-- Table -->
     <div class="row">
         <div class="col-lg-12">

@@ -7,15 +7,23 @@ class Newsflash extends BaseController
     // List Newsflash
     public function newsflash()
     {
-        $data['title'] = 'Rapma FM | Newsflash';
+        $newsflashModel = new \App\Models\NewsflashModel();
 
-        $db = \Config\Database::connect();
-        $builder = $db->table('newsflash');
-        $builder->select('id, judul, deskripsi, link, images');
-        $query = $builder->get();
+        $currentPage = $this->request->getVar('page_newsflash') ? $this->request->getVar('page_newsflash') : 1;
 
-        $data['newsflash'] = $query->getResultArray();
-        // dd($data);
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $newsflash = $newsflashModel->search($keyword);
+        } else {
+            $newsflash = $newsflashModel;
+        }
+
+        $data = [
+            'title'         => 'Rapma FM | Newsflash',
+            'newsflash'     => $newsflash->paginate(5, 'newsflash'),
+            'pager'         => $newsflashModel->pager,
+            'currentPage'   => $currentPage,
+        ];
 
         return view('newsflash/newsflash', $data);
     }
@@ -104,7 +112,7 @@ class Newsflash extends BaseController
             // 'images' => $this->request->getVar('images'),
         ]);
 
-        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');
+        session()->setFlashdata('pesan', 'Data Newsflash Berhasil Ditambahkan!');
         return redirect('newsflash/newsflash');
     }
 
@@ -174,7 +182,7 @@ class Newsflash extends BaseController
             'images' => $namaImgNewsflash,
         ]);
 
-        session()->setFlashdata('pesan', 'Data Berhasil Diubah!');
+        session()->setFlashdata('pesan', 'Data Newsflash Berhasil Diubah!');
         return redirect('newsflash/newsflash');
     }
 
@@ -194,7 +202,7 @@ class Newsflash extends BaseController
 
 
         $newsModel->delete($id);
-        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
+        session()->setFlashdata('pesan', 'Data Newsflash Berhasil Dihapus!');
         return redirect('newsflash/newsflash');
     }
 }

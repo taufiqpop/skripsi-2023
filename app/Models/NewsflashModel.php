@@ -11,4 +11,9 @@ class NewsflashModel extends Model
     protected $returnType       = 'array';
     protected $allowedFields    = ['judul', 'deskripsi', 'link', 'images'];
     protected $useTimestamps    = true;
+
+    public function search($keyword)
+    {
+        return $this->table('newsflash')->like('judul', $keyword);
+    }
 }

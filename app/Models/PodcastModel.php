@@ -11,4 +11,9 @@ class PodcastModel extends Model
     protected $returnType       = 'array';
     protected $allowedFields    = ['judul', 'program', 'deskripsi', 'link', 'images'];
     protected $useTimestamps    = true;
+
+    public function search($keyword)
+    {
+        return $this->table('podcast')->like('judul', $keyword)->orLike('program', $keyword);
+    }
 }

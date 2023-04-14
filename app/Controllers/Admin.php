@@ -84,7 +84,6 @@ class Admin extends BaseController
     {
         $usersModel = new \App\Models\UsersModel();
         $usMod = $usersModel->find($id);
-        // dd($usMod);
 
         $data = [
             'title' => 'Rapma FM | Form Edit Data',
@@ -109,7 +108,17 @@ class Admin extends BaseController
     public function update($id)
     {
         $usersModel = new \App\Models\UsersModel();
-        $hapus = $usersModel->find($id);
+        $usMod = $usersModel->find($id);
+
+        $db = \Config\Database::connect();
+        $builder = $db->table('users');
+        $builder->select('users.id as userid, username, email, fullname, user_image, name');
+        $builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $builder->where('users.id', $id);
+        $query = $builder->get();
+
+        $data['user'] = $query->getResultArray();
 
         // Validasi Input
         if (!$this->validate([
@@ -136,24 +145,23 @@ class Admin extends BaseController
             $namaImgUser = $fileImgUser->getRandomName();
             // Pindahkan gambar
             $fileImgUser->move('img', $namaImgUser);
-            // Hapus File yg Lama
-            if ($hapus['user_image'] != 'default.svg') {
-                unlink('img/' . $this->request->getVar('imgUserLama'));
-            } else {
-                unlink('img/' . $hapus['user_image']);
+            // Jangan Hapus File Default
+            if ($usMod['user_image'] != 'default.svg') {
+                unlink('img/' . $usMod['user_image']);
             }
         }
 
-        // dd($this->request->getVar());
         $usersModel->save([
             'id' => $id,
             'email' => $this->request->getVar('email'),
             'username' => $this->request->getVar('username'),
             'fullname' => $this->request->getVar('fullname'),
             'user_image' => $namaImgUser,
+            'name' => $this->request->getVar('name'),
         ]);
+        // dd($this->request->getVar());    
 
-        session()->setFlashdata('pesan', 'Data Berhasil Diubah!');
+        session()->setFlashdata('pesan', 'Data User Berhasil Diubah!');
         return redirect('admin');
     }
 
@@ -168,7 +176,7 @@ class Admin extends BaseController
         }
 
         $usersModel->delete($id);
-        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
+        session()->setFlashdata('pesan', 'Data User Berhasil Dihapus!');
         return redirect('admin/index');
     }
 

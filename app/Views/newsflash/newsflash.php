@@ -7,6 +7,22 @@
             <h1 class="h3 mb-4 text-gray-800">Daftar Newsflash</h1>
             <a href="\newsflash\addNewsflash" class="btn btn-primary">Add Newsflash</a>
             <br><br>
+
+            <form action="" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Masukkan keyword pencarian.." name="keyword" autofocus>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" name="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+
+            <?php if (session()->getFlashdata('pesan')) : ?>
+                <div class="alert alert-success" role="alert">
+                    <?= session()->getFlashdata('pesan') ?>
+                </div>
+            <?php endif; ?>
+
             <!-- Table -->
             <div class="row">
                 <div class="col-lg-12">
@@ -20,7 +36,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 1; ?>
+                            <?php $i = 1 + (5 * ($currentPage - 1)); ?>
                             <?php foreach ($newsflash as $newsflash) : ?>
                                 <tr>
                                     <th scope="row"><?= $i++; ?></th>
@@ -35,6 +51,7 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <?= $pager->links('newsflash', 'newsflash_pagination'); ?>
                 </div>
             </div>
         </div>

@@ -49,25 +49,25 @@
                                 <legend class="col-form-label col-sm-2 pt-0">Roles</legend>
                                 <div class="col-sm-10">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="roles" value="admin" <?= $user['name'] == 'admin' ? 'checked' : ''; ?>>
+                                        <input class="form-check-input" type="radio" name="name" value="admin" <?= $user['name'] == 'admin' ? 'checked' : ''; ?>>
                                         <label class="form-check-label">
                                             Admin
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="roles" value="jurnalistik" <?= $user['name'] == 'jurnalistik' ? 'checked' : ''; ?>>
+                                        <input class="form-check-input" type="radio" name="name" value="jurnalistik" <?= $user['name'] == 'jurnalistik' ? 'checked' : ''; ?>>
                                         <label class="form-check-label">
                                             Jurnalistik
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="roles" value="produksi" <?= $user['name'] == 'produksi' ? 'checked' : ''; ?>>
+                                        <input class="form-check-input" type="radio" name="name" value="produksi" <?= $user['name'] == 'produksi' ? 'checked' : ''; ?>>
                                         <label class="form-check-label">
                                             Produksi
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="roles" value="user" <?= $user['name'] == 'user' ? 'checked' : ''; ?>>
+                                        <input class="form-check-input" type="radio" name="name" value="user" <?= $user['name'] == 'user' ? 'checked' : ''; ?>>
                                         <label class="form-check-label">
                                             User
                                         </label>

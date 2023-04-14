@@ -7,14 +7,23 @@ class Podcast extends BaseController
     // List Podcast
     public function podcast()
     {
-        $data['title'] = 'Rapma FM | Podcast';
+        $podcastModel = new \App\Models\PodcastModel();
 
-        $db = \Config\Database::connect();
-        $builder = $db->table('podcast');
-        $builder->select('id, program, judul, deskripsi, link, images');
-        $query = $builder->get();
+        $currentPage = $this->request->getVar('page_podcast') ? $this->request->getVar('page_podcast') : 1;
 
-        $data['podcast'] = $query->getResultArray();
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $podcast = $podcastModel->search($keyword);
+        } else {
+            $podcast = $podcastModel;
+        }
+
+        $data = [
+            'title'         => 'Rapma FM | Podcast',
+            'podcast'       => $podcast->paginate(5, 'podcast'),
+            'pager'         => $podcastModel->pager,
+            'currentPage'   => $currentPage,
+        ];
 
         return view('podcast/podcast', $data);
     }
@@ -26,8 +35,8 @@ class Podcast extends BaseController
         $podcastMod = $podcastModel->find($id);
 
         $data = [
-            'title' => 'Rapma FM | Details Podcast',
-            'podcast' => $podcastMod,
+            'title'     => 'Rapma FM | Details Podcast',
+            'podcast'   => $podcastMod,
         ];
 
         $db = \Config\Database::connect();
@@ -103,7 +112,7 @@ class Podcast extends BaseController
             'images' => $namaGambar,
         ]);
 
-        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan!');
+        session()->setFlashdata('pesan', 'Data Podcast Berhasil Ditambahkan!');
         return redirect('podcast/podcast');
     }
 
@@ -174,7 +183,7 @@ class Podcast extends BaseController
             'images' => $namaImgPodcast,
         ]);
 
-        session()->setFlashdata('pesan', 'Data Berhasil Diubah!');
+        session()->setFlashdata('pesan', 'Data Podcast Berhasil Diubah!');
         return redirect('podcast/podcast');
     }
 
@@ -193,7 +202,7 @@ class Podcast extends BaseController
         }
 
         $podcastModel->delete($id);
-        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
+        session()->setFlashdata('pesan', 'Data Podcast Berhasil Dihapus!');
         return redirect('podcast/podcast');
     }
 }
