@@ -20,7 +20,7 @@
     <link href="<?= base_url(); ?>/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- My CSS -->
-    <link href="<?= base_url(); ?>/css/style.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>/css/my-style.css" rel="stylesheet">
 
 </head>
 
@@ -53,7 +53,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Rapma FM <?= date('Y'); ?></span>
+                        <span>Copyright &copy; <strong><?= date('Y'); ?> Rapma FM</span></strong>
                     </div>
                 </div>
             </footer>
@@ -96,7 +96,7 @@
     <script src="<?= base_url(); ?>/js/sb-admin-2.js"></script>
 
     <!-- My JavaScript -->
-    <script src="<?= base_url(); ?>/js/script.js"></script>
+    <script src="<?= base_url(); ?>/js/my-script.js"></script>
 
 </body>
 

@@ -29,8 +29,10 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'User::index');
+$routes->get('/', 'RapmaFM::index');
+$routes->get('/index', 'RapmaFM::index');
 
+$routes->get('/user', 'User::index');
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/edit/(:segment)', 'Admin::edit/$1');
