@@ -7,6 +7,12 @@
     <a href="\admin\create" class="btn btn-primary">Add Account</a>
     <br><br>
 
+    <?php if (session()->getFlashdata('pesan')) : ?>
+        <div class="alert alert-success" role="alert">
+            <?= session()->getFlashdata('pesan') ?>
+        </div>
+    <?php endif; ?>
+
     <!-- Table -->
     <div class="row">
         <div class="col-lg-12">

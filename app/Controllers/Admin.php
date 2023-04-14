@@ -161,7 +161,7 @@ class Admin extends BaseController
         ]);
         // dd($this->request->getVar());    
 
-        session()->setFlashdata('pesan', 'Data User Berhasil Diubah!');
+        session()->setFlashdata('pesan', 'Data Berhasil Diubah!');
         return redirect('admin');
     }
 
@@ -176,7 +176,7 @@ class Admin extends BaseController
         }
 
         $usersModel->delete($id);
-        session()->setFlashdata('pesan', 'Data User Berhasil Dihapus!');
+        session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
         return redirect('admin/index');
     }
 
