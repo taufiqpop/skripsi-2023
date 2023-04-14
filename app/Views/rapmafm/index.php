@@ -13,7 +13,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link rel="icon" href="<?php echo base_url(); ?>logo.ico">
+    <link rel="icon" href="<?= base_url(); ?>logo.ico">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|

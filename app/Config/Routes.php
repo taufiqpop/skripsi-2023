@@ -32,20 +32,20 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'RapmaFM::index');
 $routes->get('/index', 'RapmaFM::index');
 
-$routes->get('/user', 'User::index');
+$routes->get('/user', 'User::index', ['filter' => 'role:admin,jurnalistik,produksi,user']);
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
-$routes->get('/admin/edit/(:segment)', 'Admin::edit/$1');
+$routes->get('/admin/edit/(:segment)', 'Admin::edit/$1', ['filter' => 'role:admin,jurnalistik,produksi,user']);
 $routes->delete('/admin/(:num)', 'Admin::delete/$1', ['filter' => 'role:admin']);
 
 $routes->get('/newsflash/newsflash', 'Newsflash::newsflash', ['filter' => 'role:admin,jurnalistik,user']);
-$routes->get('/newsflash/addNewsflash', 'Newsflash::addNewsflash');
-$routes->get('/newsflash/editNewsflash/(:segment)', 'Newsflash::editNewsflash/$1');
+$routes->get('/newsflash/addNewsflash', 'Newsflash::addNewsflash', ['filter' => 'role:admin,jurnalistik,user']);
+$routes->get('/newsflash/editNewsflash/(:segment)', 'Newsflash::editNewsflash/$1', ['filter' => 'role:admin,jurnalistik,user']);
 $routes->delete('/newsflash/(:num)', 'Newsflash::delete/$1', ['filter' => 'role:admin,jurnalistik']);
 
 $routes->get('/podcast/podcast', 'Podcast::podcast', ['filter' => 'role:admin,produksi']);
-$routes->get('/podcast/addPodcast', 'Podcast::addPodcast');
-$routes->get('/podcast/editPodcast/(:segment)', 'Podcast::editPodcast/$1');
+$routes->get('/podcast/addPodcast', 'Podcast::addPodcast', ['filter' => 'role:admin,produksi']);
+$routes->get('/podcast/editPodcast/(:segment)', 'Podcast::editPodcast/$1', ['filter' => 'role:admin,produksi']);
 $routes->delete('/podcast/(:num)', 'Podcast::delete/$1', ['filter' => 'role:admin,produksi']);
 
 
