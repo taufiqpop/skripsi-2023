@@ -33,6 +33,7 @@ $routes->get('/', 'RapmaFM::index');
 $routes->get('/index', 'RapmaFM::index');
 
 $routes->get('/user', 'User::index', ['filter' => 'role:admin,jurnalistik,produksi,user']);
+$routes->get('/profile', 'User::profile', ['filter' => 'role:admin,jurnalistik,produksi,user']);
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/edit/(:segment)', 'Admin::edit/$1', ['filter' => 'role:admin,jurnalistik,produksi,user']);

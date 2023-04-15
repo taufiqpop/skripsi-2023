@@ -8,6 +8,16 @@
         <div class="sidebar-brand-text mx-3">Rapma FM</div>
     </a>
 
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="<?= base_url('user'); ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
     <!-- User Management -->
     <?php if (in_groups('admin')) : ?>
         <!-- Divider -->
@@ -37,7 +47,7 @@
 
     <!-- Nav Item - My Profile -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('user'); ?>">
+        <a class="nav-link" href="<?= base_url('user/profile'); ?>">
             <i class="fas fa-user"></i>
             <span>My Profile</span></a>
     </li>
