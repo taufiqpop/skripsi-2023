@@ -70,7 +70,7 @@
                             <span>Contact</span></a></li>
                 </ul>
             </nav>
-            <audio id="demosMenu" controls autoplay style="width: auto; height: 25px;">
+            <audio id="demosMenu" controls style="width: auto; height: 25px;">
                 <source src="https://c2.siar.us:9999/stream" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>

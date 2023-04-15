@@ -5,6 +5,18 @@
         <i class="fa fa-bars"></i>
     </button>
 
+    <!-- Topbar Search -->
+    <form action="" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" name="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 
@@ -24,7 +36,7 @@
                 </a>
                 <?php if (in_groups('admin')) : ?>
                     <a class="dropdown-item" href="https://app.crisp.chat/" target="_blank">
-                        <i class="fa fa-bell fa-sm fa-spin fa-fw mr-2 text-gray-400"></i>
+                        <i class="fa fa-bell fa-sm fa-fw mr-2 text-gray-400"></i>
                         Live Chat
                     </a>
                 <?php endif; ?>

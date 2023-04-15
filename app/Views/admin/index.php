@@ -14,39 +14,40 @@
     <?php endif; ?>
 
     <!-- Table -->
-    <div class="row">
-        <div class="col-lg-12">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Photo Profile</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($users as $user) : ?>
+    <div class="row card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
                         <tr>
-                            <th scope="row"><?= $i++; ?></th>
-                            <td>
-                                <img src="/img/<?= $user['user_image']; ?>" class="thumbnail">
-                            </td>
-                            <td><?= $user['fullname']; ?></td>
-                            <td><?= $user['username']; ?></td>
-                            <td><?= $user['name']; ?></td>
-                            <td>
-                                <a href="<?= base_url('admin/detail/' . $user['userid']); ?>" class="btn btn-info">Details</a>
-                            </td>
+                            <th scope="col" class="cursor-active">No</th>
+                            <th scope="col" class="cursor-stop">Photo Profile</th>
+                            <th scope="col" class="cursor-active">Full Name</th>
+                            <th scope="col" class="cursor-active">Username</th>
+                            <th scope="col" class="cursor-active">Role</th>
+                            <th scope="col" class="cursor-stop">Action</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($users as $user) : ?>
+                            <tr>
+                                <th scope="row"><?= $i++; ?></th>
+                                <td>
+                                    <img src="/img/<?= $user['user_image']; ?>" class="thumbnail">
+                                </td>
+                                <td><?= $user['fullname']; ?></td>
+                                <td><?= $user['username']; ?></td>
+                                <td><?= $user['name']; ?></td>
+                                <td>
+                                    <a href="<?= base_url('admin/detail/' . $user['userid']); ?>" class="btn btn-info">Details</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-
 </div>
 <?= $this->endSection(); ?>

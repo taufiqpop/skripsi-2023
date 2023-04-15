@@ -64,3 +64,11 @@
 #page-content {
     position: relative;
 }
+
+.cursor-active {
+    cursor: pointer;
+}
+
+.cursor-stop {
+    cursor: not-allowed;
+}
