@@ -12,7 +12,9 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Masukkan keyword pencarian.." name="keyword" autofocus>
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit" name="submit">Search</button>
+                        <button class="btn btn-primary" type="submit" name="submit">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
                     </div>
                 </div>
             </form>
