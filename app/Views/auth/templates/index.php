@@ -24,7 +24,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-img-rpm">
 
     <!-- Content -->
     <?= $this->renderSection('content'); ?>

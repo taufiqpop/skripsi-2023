@@ -72,3 +72,10 @@
 .cursor-stop {
     cursor: not-allowed;
 }
+
+.bg-img-rpm {
+    background: url('/img/Wallpaper.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
