@@ -4,8 +4,17 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">User List</h1>
-    <a href="\admin\create" class="btn btn-primary">Add Account</a>
-    <br><br>
+
+    <form action="" method="post">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Masukkan keyword pencarian.." name="keyword" autofocus>
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" name="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+    </form>
 
     <?php if (session()->getFlashdata('pesan')) : ?>
         <div class="alert alert-success" role="alert">

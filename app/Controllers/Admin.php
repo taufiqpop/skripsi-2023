@@ -24,7 +24,8 @@ class Admin extends BaseController
     // Details Data
     public function detail($id)
     {
-        $usersModel = new \App\Models\UsersModel();
+        $usersModel = new \Myth\Auth\Models\UserModel();
+        // $usersModel = new \App\Models\UsersModel();
         $usMod = $usersModel->findAll();
         // dd($usMod);
 
@@ -44,21 +45,6 @@ class Admin extends BaseController
         $data['user'] = $query->getResultArray();
 
         return view('admin/detail', $data);
-    }
-
-    // Create Data
-    public function create()
-    {
-        $data['title'] = 'Rapma FM | Add Account';
-
-        $db = \Config\Database::connect();
-        $builder = $db->table('users');
-        $builder->select('users.id as userid, username, email, fullname, user_image, password_hash');
-        $query = $builder->get();
-
-        $data['users'] = $query->getResultArray();
-
-        return view('admin/create', $data);
     }
 
     // Save Data
@@ -178,30 +164,5 @@ class Admin extends BaseController
         $usersModel->delete($id);
         session()->setFlashdata('pesan', 'Data Berhasil Dihapus!');
         return redirect('admin/index');
-    }
-
-    // Change Password
-    public function ubahPassword($id)
-    {
-        $usersModel = new \App\Models\UsersModel();
-        $usMod = $usersModel->find($id);
-        // dd($usMod);
-
-        $data = [
-            'title' => 'Rapma FM | Form Change Password',
-            'users' => $usMod,
-        ];
-
-        $db = \Config\Database::connect();
-        $builder = $db->table('users');
-        $builder->select('users.id as userid, username, email, fullname, user_image, name');
-        $builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
-        $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
-        $builder->where('users.id', $id);
-        $query = $builder->get();
-
-        $data['user'] = $query->getResultArray();
-
-        return view('admin/ubahPassword', $data);
     }
 }

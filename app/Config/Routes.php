@@ -49,6 +49,7 @@ $routes->get('/podcast/addPodcast', 'Podcast::addPodcast', ['filter' => 'role:ad
 $routes->get('/podcast/editPodcast/(:segment)', 'Podcast::editPodcast/$1', ['filter' => 'role:admin,produksi']);
 $routes->delete('/podcast/(:num)', 'Podcast::delete/$1', ['filter' => 'role:admin,produksi']);
 
+$routes->get('/password/index', 'ChangePassword::index', ['filter' => 'role:admin,jurnalistik,produksi,user']);
 
 /*
  * --------------------------------------------------------------------

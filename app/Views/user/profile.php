@@ -36,7 +36,7 @@
 
                                 <li class="list-group-item">
                                     <a href="<?= base_url('admin/edit/' . user()->id); ?>" class="btn btn-info">Edit Profile</a>
-                                    <a href="<?= base_url('admin/ubahPassword/' . user()->id); ?>" class="btn btn-danger">Change Password</a>
+                                    <a href="<?= base_url('changepassword/index/' . user()->id); ?>" class="btn btn-danger">Change Password</a>
                                 </li>
                             </ul>
                         </div>
