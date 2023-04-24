@@ -18,13 +18,18 @@ class UsersModel extends Model
     protected $useSoftDeletes = true;
     protected $allowedFields  = [
         'email', 'username', 'user_images', 'fullname', 'password_hash', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',
-        'status', 'status_message', 'active', 'force_pass_reset', 'permissions', 'deleted_at', 'name',
+        'status', 'status_message', 'active', 'force_pass_reset', 'permissions', 'deleted_at', 'created_at', 'updated_at', 'name',
     ];
     protected $useTimestamps   = true;
 
     public function search($keyword)
     {
         return $this->table('users')->like('username', $keyword)->orLike('fullname', $keyword);
+    }
+
+    public function jumlahUsers()
+    {
+        return $this->table('users')->get()->getNumRows();
     }
 
     protected $validationRules = [

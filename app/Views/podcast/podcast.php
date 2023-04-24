@@ -34,8 +34,10 @@
                                 <tr>
                                     <th scope="col" class="cursor-active">No</th>
                                     <th scope="col" class="cursor-stop">Artwork</th>
-                                    <th scope="col" class="cursor-active">Program</th>
-                                    <th scope="col" class="cursor-active">Judul</th>
+                                    <th scope="col" class="cursor-active col-2">Program</th>
+                                    <th scope="col" class="cursor-active col-">Judul</th>
+                                    <th scope="col" class="cursor-active col-2">Created</th>
+                                    <th scope="col" class="cursor-active col-2">Updated</th>
                                     <th scope="col" class="cursor-stop">Link</th>
                                     <th scope="col" class="cursor-stop">Action</th>
                                 </tr>
@@ -46,10 +48,12 @@
                                     <tr>
                                         <th scope="row"><?= $i++; ?></th>
                                         <td>
-                                            <img src="/img/<?= $podcast['images']; ?>" class="thumbnail">
+                                            <img src="<?= base_url('img/' . $podcast['images']); ?>" class="thumbnail">
                                         </td>
                                         <td><?= $podcast['program']; ?></td>
                                         <td id="judul-rata-kiri"><?= $podcast['judul']; ?></td>
+                                        <td><?= $podcast['created_at']; ?></td>
+                                        <td><?= $podcast['updated_at']; ?></td>
                                         <td>
                                             <a href="<?= $podcast['link']; ?>" class="btn btn-warning" target="_blank">Link</a>
                                         </td>

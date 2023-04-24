@@ -35,6 +35,8 @@
                                     <th scope="col" class="cursor-stop">Photo Profile</th>
                                     <th scope="col" class="cursor-active">Full Name</th>
                                     <th scope="col" class="cursor-active">Username</th>
+                                    <th scope="col" class="cursor-active col-2">Created</th>
+                                    <th scope="col" class="cursor-active col-2">Updated</th>
                                     <th scope="col" class="cursor-stop">Action</th>
                                 </tr>
                             </thead>
@@ -48,6 +50,8 @@
                                         </td>
                                         <td><?= $user['fullname']; ?></td>
                                         <td><?= $user['username']; ?></td>
+                                        <td><?= $user['created_at']; ?></td>
+                                        <td><?= $user['updated_at']; ?></td>
                                         <td>
                                             <a href="<?= base_url('admin/detail/' . $user['id']); ?>" class="btn btn-info">Details</a>
                                         </td>

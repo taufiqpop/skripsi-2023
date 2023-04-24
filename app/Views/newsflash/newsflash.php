@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-10">
+        <div class="col-11">
             <h1 class="h3 mb-4 text-gray-800">Daftar Newsflash</h1>
             <a href="\newsflash\addNewsflash" class="btn btn-primary">Add Newsflash</a>
             <br><br>
@@ -33,7 +33,10 @@
                             <thead>
                                 <tr>
                                     <th scope="col" class="cursor-active">No</th>
+                                    <th scope="col" class="cursor-stop">Photo</th>
                                     <th scope="col" class="cursor-active">Judul</th>
+                                    <th scope="col" class="cursor-active col-2">Created</th>
+                                    <th scope="col" class="cursor-active col-2">Updated</th>
                                     <th scope="col" class="cursor-stop">Link</th>
                                     <th scope="col" class="cursor-stop">Action</th>
                                 </tr>
@@ -43,7 +46,12 @@
                                 <?php foreach ($newsflash as $newsflash) : ?>
                                     <tr>
                                         <th scope="row"><?= $i++; ?></th>
+                                        <td>
+                                            <img src="<?= base_url('img/' . $newsflash['images']); ?>" class="thumbnail">
+                                        </td>
                                         <td id="judul-rata-kiri"><?= $newsflash['judul']; ?></td>
+                                        <td><?= $newsflash['created_at']; ?></td>
+                                        <td><?= $newsflash['updated_at']; ?></td>
                                         <td>
                                             <a href="<?= $newsflash['link']; ?>" class="btn btn-warning" target="_blank">Link</a>
                                         </td>

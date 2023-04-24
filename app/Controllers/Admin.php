@@ -19,6 +19,8 @@ class Admin extends BaseController
             $users = $usersModel;
         }
 
+        $usersModel->orderBy('id', 'DESC');
+
         $data = [
             'title'         => 'Rapma FM | User List',
             'users'         => $users->paginate(5, 'users'),

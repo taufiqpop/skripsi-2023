@@ -18,6 +18,8 @@ class Newsflash extends BaseController
             $newsflash = $newsflashModel;
         }
 
+        $newsflashModel->orderBy('id', 'DESC');
+
         $data = [
             'title'         => 'Rapma FM | Newsflash',
             'newsflash'     => $newsflash->paginate(5, 'newsflash'),

@@ -26,7 +26,7 @@
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         Users
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jmlUsers; ?></div>
                                 </div>
                                 <div class="col-auto">
                                     <a href="<?= base_url('admin/index'); ?>">
@@ -46,7 +46,7 @@
                                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                         Newsflash
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">7</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jmlNewsflash; ?></div>
                                 </div>
                                 <div class="col-auto">
                                     <a href="<?= base_url('newsflash/newsflash'); ?>">
@@ -67,7 +67,7 @@
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         Podcast
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">9</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jmlPodcast; ?></div>
                                 </div>
                                 <div class="col-auto">
                                     <a href="<?= base_url('podcast/podcast'); ?>">
@@ -88,7 +88,7 @@
                                     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                         Listener
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">65</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">-</div>
                                 </div>
                                 <div class="col-auto">
                                     <a href="http://rapmafm.onlivestreaming.net:9999/" target="_blank">
