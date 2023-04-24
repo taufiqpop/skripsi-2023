@@ -27,7 +27,7 @@
                             <div class="row">
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-hover" width="100%" cellspacing="0">
+                                        <table class="table table-hover table-striped" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">No</th>
@@ -48,7 +48,7 @@
                                                         <td><?= $podcast['program']; ?></td>
                                                         <td id="judul-rata-kiri"><?= $podcast['judul']; ?></td>
                                                         <td>
-                                                            <a href="<?= $podcast['link']; ?>" class="btn btn-warning" target="_blank">Link</a>
+                                                            <a href="<?= $podcast['link']; ?>" class="btn btn-success" target="_blank">Link</a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>

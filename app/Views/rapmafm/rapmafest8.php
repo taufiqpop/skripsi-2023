@@ -13,8 +13,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicon -->
-  <link href="<?= base_url(); ?>rapmafest8/ico/rapmafest.ico" rel="icon">
-  <link href="<?= base_url(); ?>rapmafest8/ico/rapmafest.ico" rel="apple-touch-icon">
+  <link rel="icon" href="<?= base_url(); ?>/rapmafest8/ico/rapmafest.ico">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
@@ -36,7 +35,7 @@
   <header id="header" class="d-flex align-items-center" style="height: 100px;">
     <div class="container-fluid container-xxl d-flex align-items-center">
       <div id="logo" class="me-auto">
-        <a href="<?= base_url(); ?>rapmafm/rapmafest8" class="scrollto"><img src="<?= base_url(); ?>rapmafest8/images/Logo Rapmafest 8.png" alt="RAPMAFEST#8" title="RAPMAFEST#8"></a>
+        <a href="<?= base_url(); ?>rapmafm" class="scrollto"><img src="<?= base_url(); ?>rapmafest8/images/Logo Rapmafest 8.png" alt="RAPMAFEST#8" title="RAPMAFEST#8"></a>
       </div>
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>

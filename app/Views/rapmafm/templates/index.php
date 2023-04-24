@@ -47,7 +47,7 @@
         <div class="d-flex flex-column">
             <div class="profile">
                 <img src="<?= base_url('img/RapmaFM Header.png') ?>" class="img-fluid rounded-circle">
-                <h1 class="text-light"><a href="index.html" title="Rapma FM">Rapma FM</a></h1>
+                <h1 class="text-light"><a href="<?= base_url('rapmafm'); ?>" title="Rapma FM">Rapma FM</a></h1>
             </div>
             <nav id="navbar" class="nav-menu navbar">
                 <ul>
