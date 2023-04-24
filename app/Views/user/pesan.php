@@ -33,7 +33,7 @@
                                     <th scope="col" class="cursor-active">Name</th>
                                     <th scope="col" class="cursor-active">Subject</th>
                                     <th scope="col" class="cursor-active">Message</th>
-                                    <th scope="col" class="cursor-active">Created</th>
+                                    <th scope="col" class="cursor-active">Date</th>
                                 </tr>
                             </thead>
                             <tbody>
