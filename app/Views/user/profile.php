@@ -36,7 +36,9 @@
 
                                 <li class="list-group-item">
                                     <a href="<?= base_url('admin/edit/' . user()->id); ?>" class="btn btn-info">Edit Profile</a>
-                                    <a href="<?= base_url('changepassword/index/' . user()->id); ?>" class="btn btn-danger">Change Password</a>
+                                    <?php if (in_groups('admin') || in_groups('jurnalistik') || in_groups('produksi') || in_groups('user')) : ?>
+                                        <a href="<?= base_url('changepassword/index/' . user()->id); ?>" class="btn btn-danger">Change Password</a>
+                                    <?php endif; ?>
                                 </li>
                             </ul>
                         </div>

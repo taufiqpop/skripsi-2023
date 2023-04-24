@@ -30,6 +30,9 @@
                                 <?php if ($user['name'] == 'user') : ?>
                                     <span class="badge badge-primary"><?= $user['name']; ?></span>
                                 <?php endif; ?>
+                                <?php if ($user['name'] == null) : ?>
+                                    <span class="badge badge-dark">none</span>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="col-md-8">

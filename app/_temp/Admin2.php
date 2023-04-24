@@ -7,24 +7,16 @@ class Admin extends BaseController
     // User List
     public function index()
     {
-        // $usersModel = new \Myth\Auth\Models\UserModel();
-        $usersModel = new \App\Models\UsersModel();
+        $data['title'] = 'Rapma FM | User List';
 
-        $currentPage = $this->request->getVar('page_users') ? $this->request->getVar('page_users') : 1;
+        $db = \Config\Database::connect();
+        $builder = $db->table('users');
+        $builder->select('users.id as userid, username, email, fullname, user_image, name');
+        $builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
+        $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $query = $builder->get();
 
-        $keyword = $this->request->getVar('keyword');
-        if ($keyword) {
-            $users = $usersModel->search($keyword);
-        } else {
-            $users = $usersModel;
-        }
-
-        $data = [
-            'title'         => 'Rapma FM | User List',
-            'users'         => $users->paginate(5, 'users'),
-            'pager'         => $usersModel->pager,
-            'currentPage'   => $currentPage,
-        ];
+        $data['users'] = $query->getResultArray();
 
         return view('admin/index', $data);
     }

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-8">
             <h1 class="h3 mb-4 text-gray-800">Form Add Data Podcast</h1>
-            <form action="/podcast/save" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url(); ?>/podcast/save" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="form-group row">
                     <label for="judul" class="col-sm-2 col-form-label">Judul</label>
