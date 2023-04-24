@@ -20,7 +20,6 @@ class Podcast extends BaseController
 
         $podcastModel->orderBy('id', 'DESC');
 
-
         $data = [
             'title'         => 'Rapma FM | Podcast',
             'podcast'       => $podcast->paginate(5, 'podcast'),
