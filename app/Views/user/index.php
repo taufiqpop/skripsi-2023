@@ -86,13 +86,13 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                        Listener
+                                        Pesan CampusBrainers
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">-</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jmlPesan; ?></div>
                                 </div>
                                 <div class="col-auto">
-                                    <a href="http://rapmafm.onlivestreaming.net:9999/" target="_blank">
-                                        <i class="fas fa-volume-up fa-2x text-danger"></i>
+                                    <a href="<?= base_url('user/pesan'); ?>">
+                                        <i class="fas fa-envelope fa-2x text-danger"></i>
                                     </a>
                                 </div>
                             </div>

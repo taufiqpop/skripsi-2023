@@ -31,6 +31,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'RapmaFM::index');
 $routes->get('/index', 'RapmaFM::index');
+$routes->get('/contact', 'RapmaFM::contact');
 
 $routes->get('/user', 'User::index', ['filter' => 'role:admin,jurnalistik,produksi,user']);
 $routes->get('/profile', 'User::profile', ['filter' => 'role:admin,jurnalistik,produksi,user']);

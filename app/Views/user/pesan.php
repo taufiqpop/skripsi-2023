@@ -4,9 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-11">
-            <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800">User List</h1>
-
+            <h1 class="h3 mb-4 text-gray-800">Daftar Pesan CampusBrainers</h1>
             <form action="" method="post">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Search" name="keyword" autofocus>
@@ -32,34 +30,26 @@
                             <thead>
                                 <tr>
                                     <th scope="col" class="cursor-active">No</th>
-                                    <th scope="col" class="cursor-stop">Photo Profile</th>
-                                    <th scope="col" class="cursor-active">Full Name</th>
-                                    <th scope="col" class="cursor-active">Username</th>
-                                    <th scope="col" class="cursor-active col-2">Created</th>
-                                    <th scope="col" class="cursor-active col-2">Updated</th>
-                                    <th scope="col" class="cursor-stop">Action</th>
+                                    <th scope="col" class="cursor-active">Name</th>
+                                    <th scope="col" class="cursor-active">Subject</th>
+                                    <th scope="col" class="cursor-active">Message</th>
+                                    <th scope="col" class="cursor-active">Created</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $i = 1 + (5 * ($currentPage - 1)); ?>
-                                <?php foreach ($users as $user) : ?>
+                                <?php foreach ($pesan as $pesan) : ?>
                                     <tr>
                                         <th scope="row"><?= $i++; ?></th>
-                                        <td>
-                                            <img src="/img/<?= $user['user_image']; ?>" class="thumbnail">
-                                        </td>
-                                        <td><?= $user['fullname']; ?></td>
-                                        <td><?= $user['username']; ?></td>
-                                        <td><?= $user['created_at']; ?></td>
-                                        <td><?= $user['updated_at']; ?></td>
-                                        <td>
-                                            <a href="<?= base_url('admin/detail/' . $user['id']); ?>" class="btn btn-info">Details</a>
-                                        </td>
+                                        <td><?= $pesan['name']; ?></td>
+                                        <td><?= $pesan['subject']; ?></td>
+                                        <td><?= $pesan['message']; ?></td>
+                                        <td><?= $pesan['created_at']; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                        <?= $pager->links('users', 'users_pagination'); ?>
+                        <?= $pager->links('pesan', 'pesan_pagination'); ?>
                     </div>
                 </div>
             </div>

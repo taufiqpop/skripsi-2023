@@ -28,6 +28,7 @@ class Pager extends BaseConfig
         'podcast_pagination' => 'App\Views\Pagers\podcast_pagination',
         'newsflash_pagination' => 'App\Views\Pagers\newsflash_pagination',
         'users_pagination' => 'App\Views\Pagers\users_pagination',
+        'pesan_pagination' => 'App\Views\Pagers\pesan_pagination',
 
     ];
 

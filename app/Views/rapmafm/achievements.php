@@ -6,7 +6,7 @@
     <section id="achievement" class="portfolio-details-slider">
         <div class="container">
             <div class="section-title">
-                <h2 style="text-align: center;">Achievement</h2>
+                <h2 style="text-align: center;">Achievements</h2>
             </div>
             <div class="row g-2 g-md-4">
                 <div class="col-6 col-md-4">

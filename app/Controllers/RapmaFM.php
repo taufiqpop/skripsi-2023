@@ -84,9 +84,30 @@ class RapmaFM extends BaseController
         return view('rapmafm/achievements', $data);
     }
 
+    public function contact()
+    {
+        $data['title'] = 'Rapma FM | Contact Person';
+        return view('rapmafm/contact', $data);
+    }
+
     public function rapmafest8()
     {
         $data['title'] = 'Rapma FM | RAPMAFEST #8';
         return view('rapmafm/rapmafest8', $data);
+    }
+
+    // Save Data
+    public function save()
+    {
+        $pesanModel = new \App\Models\PesanModel();
+
+        $pesanModel->save([
+            'name' => $this->request->getVar('name'),
+            'subject' => $this->request->getVar('subject'),
+            'message' => $this->request->getVar('message'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Pesan Berhasil Dikirim! Terima Kasih CampusBrainers!');
+        return redirect('contact');
     }
 }

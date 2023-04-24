@@ -10,7 +10,7 @@
 
             <form action="" method="post">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Masukkan keyword pencarian.." name="keyword" autofocus>
+                    <input type="text" class="form-control" placeholder="Search" name="keyword" autofocus>
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit" name="submit">
                             <i class="fas fa-search fa-sm"></i>
@@ -35,7 +35,7 @@
                                     <th scope="col" class="cursor-active">No</th>
                                     <th scope="col" class="cursor-stop">Artwork</th>
                                     <th scope="col" class="cursor-active col-2">Program</th>
-                                    <th scope="col" class="cursor-active col-">Judul</th>
+                                    <th scope="col" class="cursor-active col-3">Judul</th>
                                     <th scope="col" class="cursor-active col-2">Created</th>
                                     <th scope="col" class="cursor-active col-2">Updated</th>
                                     <th scope="col" class="cursor-stop">Link</th>

@@ -67,7 +67,7 @@
                             <span>Achievements</span></a></li>
                     <li><a href="<?= base_url('/rapmafm/index#chart'); ?>" class="nav-link scrollto"><i class="bx bx-music" title="Top Chart"></i>
                             <span>Top Chart</span></a></li>
-                    <li><a href="<?= base_url('/rapmafm/index#contact'); ?>" class="nav-link scrollto"><i class="bx bx-envelope" title="Contact"></i>
+                    <li><a href="<?= base_url('/rapmafm/contact'); ?>" class="nav-link scrollto"><i class="bx bx-envelope" title="Contact"></i>
                             <span>Contact</span></a></li>
                 </ul>
             </nav>

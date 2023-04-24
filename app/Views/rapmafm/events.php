@@ -6,7 +6,7 @@
     <section id="event" class="portfolio section-bg">
         <div class="row g-4 g-md-6">
             <div class="section-title">
-                <h2 style="text-align: center;">Event</h2>
+                <h2 style="text-align: center;">Events</h2>
             </div>
             <div class="col-6 col-md-6">
                 <div class="card-body">
