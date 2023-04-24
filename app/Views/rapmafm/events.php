@@ -33,7 +33,7 @@
                     </center>
                     <div class="card-body">
                         <center>
-                            <a href="<?= base_url('rapmafm/tiket-rapmafest.php'); ?>" target="_blank" class="btn btn-success">See Event</a>
+                            <a href="<?= base_url('rapmafm/rapmafest8'); ?>" target="_blank" class="btn btn-success">See Event</a>
                         </center>
                     </div>
                 </div>

@@ -83,4 +83,10 @@ class RapmaFM extends BaseController
         $data['title'] = 'Rapma FM | Achievements';
         return view('rapmafm/achievements', $data);
     }
+
+    public function rapmafest8()
+    {
+        $data['title'] = 'Rapma FM | RAPMAFEST #8';
+        return view('rapmafm/rapmafest8', $data);
+    }
 }
