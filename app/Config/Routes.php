@@ -38,6 +38,7 @@ $routes->get('/rapmafm/newsflash', 'RapmaFM::newsflash');
 $routes->get('/rapmafm/events', 'RapmaFM::events');
 $routes->get('/rapmafm/achievements', 'RapmaFM::achievements');
 $routes->get('/rapmafm/contact', 'RapmaFM::contact');
+$routes->get('/rapmafm/rapmafest8', 'RapmaFM::rapmafest8');
 
 $routes->get('/user', 'User::index', ['filter' => 'role:admin,jurnalistik,produksi,user']);
 $routes->get('/profile', 'User::profile', ['filter' => 'role:admin,jurnalistik,produksi,user']);
