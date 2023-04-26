@@ -31,6 +31,13 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'RapmaFM::index');
 $routes->get('/index', 'RapmaFM::index');
+$routes->get('/rapmafm/structure', 'RapmaFM::structure');
+$routes->get('/rapmafm/program', 'RapmaFM::program');
+$routes->get('/rapmafm/podcast', 'RapmaFM::podcast');
+$routes->get('/rapmafm/newsflash', 'RapmaFM::newsflash');
+$routes->get('/rapmafm/events', 'RapmaFM::events');
+$routes->get('/rapmafm/achievements', 'RapmaFM::achievements');
+$routes->get('/rapmafm/contact', 'RapmaFM::contact');
 
 $routes->get('/user', 'User::index', ['filter' => 'role:admin,jurnalistik,produksi,user']);
 $routes->get('/profile', 'User::profile', ['filter' => 'role:admin,jurnalistik,produksi,user']);
