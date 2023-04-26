@@ -87,7 +87,7 @@
         <div class="container">
             <div class="copyright">
                 Copyright <a href="<?= base_url(); ?>/user" style="color:black;" target="_blank">
-                    &copy;</a> <strong><span><?= date('Y'); ?> Rapma FM</span></strong>
+                    &copy;</a> <strong><span><?= date('Y'); ?> Taufiq Pop</span></strong>
             </div>
         </div>
     </footer>

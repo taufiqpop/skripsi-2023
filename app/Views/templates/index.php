@@ -53,7 +53,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; <strong><?= date('Y'); ?> Rapma FM</span></strong>
+                        <span>Copyright &copy; <strong><?= date('Y'); ?> Taufiq Pop</span></strong>
                     </div>
                 </div>
             </footer>
