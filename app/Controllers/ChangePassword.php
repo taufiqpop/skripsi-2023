@@ -16,7 +16,7 @@ class ChangePassword extends BaseController
                 'title' => 'Rapma FM | Change Password',
                 'id' => $id,
             ];
-            return view('/password/index', $data);
+            return view('password/index', $data);
         }
     }
 
@@ -35,7 +35,7 @@ class ChangePassword extends BaseController
                 'validation' => $this->validator,
             ];
 
-            return view('/password/index', $data);
+            return view('password/index', $data);
         } else {
             $userModel = new UserModel();
             $data = [
