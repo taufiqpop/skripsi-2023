@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-8">
                 <h1 class="h3 mb-4 text-gray-800">Form Edit Data</h1>
-                <form action="/admin/update/<?= $user['userid']; ?>" method="post" enctype="multipart/form-data">
+                <form action="/admin/update/<?= $user['id']; ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="imgUserLama" value="<?= $user['user_image']; ?>">
                     <div class="form-group row">
@@ -43,39 +43,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <?php if (in_groups('admin')) : ?>
-                        <fieldset class="form-group">
-                            <div class="row">
-                                <legend class="col-form-label col-sm-2 pt-0">Roles</legend>
-                                <div class="col-sm-10">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="name" value="admin" <?= $user['name'] == 'admin' ? 'checked' : ''; ?>>
-                                        <label class="form-check-label">
-                                            Admin
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="name" value="jurnalistik" <?= $user['name'] == 'jurnalistik' ? 'checked' : ''; ?>>
-                                        <label class="form-check-label">
-                                            Jurnalistik
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="name" value="produksi" <?= $user['name'] == 'produksi' ? 'checked' : ''; ?>>
-                                        <label class="form-check-label">
-                                            Produksi
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="name" value="user" <?= $user['name'] == 'user' ? 'checked' : ''; ?>>
-                                        <label class="form-check-label">
-                                            User
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    <?php endif; ?> -->
 
                     <div class="form-group row">
                         <div class="col-sm-10">

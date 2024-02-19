@@ -51,7 +51,7 @@
             </div>
             <nav id="navbar" class="nav-menu navbar">
                 <ul>
-                    <li><a href="<?= base_url('/rapmafm/index'); ?>" class="nav-link scrollto active"><i class="bx bx-home" title="Home"></i>
+                    <li><a href="<?= base_url('/rapmafm/index'); ?>" class="nav-link scrollto"><i class="bx bx-home" title="Home"></i>
                             <span>Home</span></a></li>
                     <li><a href="<?= base_url('/rapmafm/structure'); ?>" class="nav-link scrollto"><i class="bx bx-user" title="Structure"></i>
                             <span>Structure</span></a></li>

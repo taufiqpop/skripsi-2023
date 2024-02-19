@@ -45,7 +45,7 @@
                                                         </td>
                                                         <td id="judul-rata-kiri"><?= $newsflash['judul']; ?></td>
                                                         <td>
-                                                            <a href="<?= $newsflash['link']; ?>" class="btn btn-warning" target="_blank">Link</a>
+                                                            <a href="<?= $newsflash['link']; ?>" class="btn btn-success" target="_blank">Link</a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>

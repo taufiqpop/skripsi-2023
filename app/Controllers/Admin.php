@@ -66,7 +66,6 @@ class Admin extends BaseController
             'username' => $this->request->getVar('username'),
             'fullname' => $this->request->getVar('fullname'),
             'password_hash' => $this->request->getVar('password_hash'),
-            // 'images' => $namaGambar,
             'user_image' => $this->request->getVar('user_image'),
         ]);
 
@@ -88,10 +87,8 @@ class Admin extends BaseController
 
         $db = \Config\Database::connect();
         $builder = $db->table('users');
-        $builder->select('users.id as userid, username, email, fullname, user_image, name');
-        $builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
-        $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
-        $builder->where('users.id', $id);
+        $builder->select('id, username, email, fullname, user_image');
+        $builder->where('id', $id);
         $query = $builder->get();
 
         $data['user'] = $query->getResultArray();
@@ -107,10 +104,8 @@ class Admin extends BaseController
 
         $db = \Config\Database::connect();
         $builder = $db->table('users');
-        $builder->select('users.id as userid, username, email, fullname, user_image, name');
-        $builder->join('auth_groups_users', 'auth_groups_users.user_id = users.id');
-        $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
-        $builder->where('users.id', $id);
+        $builder->select('id, username, email, fullname, user_image');
+        $builder->where('id', $id);
         $query = $builder->get();
 
         $data['user'] = $query->getResultArray();
